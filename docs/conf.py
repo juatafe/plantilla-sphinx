@@ -13,9 +13,14 @@ myst_heading_anchors = 3
 html_theme = "pydata_sphinx_theme"
 html_title = "Repo de plantilla sphinx"
 html_static_path = ["_static"]
-html_logo = "_static/odoo_logo.svg"
-html_css_files = ["custom.css"]
-# html_favicon = "_static/favicon.ico"
+html_logo = "_static/assets/img/logo.svg"          # el teu logo gran
+html_favicon = "_static/assets/img/logos/logo50.ico"
+
+# Carrega els teus CSS (ordre importa: de general -> específic)
+html_css_files = [
+    "assets/stylesheets/customs.css",
+    "assets/stylesheets/extra.css",
+]
 
 html_theme_options = {
     "use_edit_page_button": True,
