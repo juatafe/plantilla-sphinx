@@ -1,6 +1,5 @@
 /* ===== Paleta (adaptada) ===== */
 :root {
-  /* No calen variables de MKDocs ací, però pots definir-ne per ús propi */
   --brand-primary: #660099;  /* Morat */
   --brand-accent:  #F39200;  /* Taronja */
 }
@@ -9,9 +8,9 @@
 
 /* Barra superior */
 .bd-header .navbar {
-  background-color: #fff;              /* com posaves header blanc */
+  background-color: #fff;
   color: var(--brand-primary);
-  min-height: 10vh;                    /* semblant al que tenies */
+  min-height: 10vh;
 }
 
 /* Contenidor interior */
@@ -25,171 +24,9 @@
   padding-right: 1vw;
 }
 
-/* Logo del site (si vols amagar l'img per usar els teus) */
-.navbar-brand img {
-  display: none;  /* així només es veuen els teus dos logos */
-}
-
-/* Bloc amb els teus dos logos (del component navbar-extra.html) */
-.jb-navbar-logos {
-  display: flex;
-  align-items: center;
-  gap: 1vw;
-  position: relative;
-}
-
-/* Primer logo (Just) */
-.jb-navbar-logos .jb-logo-just {
-  display: inline-block;
-  width: 7vw;
-  height: 8vh;
-  background-image: url("../../assets/img/logos/logoJust.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-/* Tercer logo (GvaNext) */
-.jb-navbar-logos .jb-logo-gvanext {
-  display: inline-block;
-  width: 15vw;
-  height: 5vh;
-  background-image: url("../../assets/img/logos/GvaNext.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-/* ===== FONS DE PÀGINA ===== */
-body {
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.7)),
-    url("../../assets/img/fondo.png");
-  background-size: cover;
-  background-position: center bottom;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-}
-
-/* ===== FOOTER BASE (PyData) ===== */
-.bd-footer {
-  background: #fff;  /* base blanca com posaves */
-}
-
-/* El nostre footer personalitzat */
-.custom-footer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 2vw;
-  width: 100%;
-  background-color: white;
-  padding: 2vh 5vw;
-  color: black;
-  box-sizing: border-box;
-  min-height: 10vh;
-  border-top: 2px solid #ddd;
-}
-
-.footer-logo img {
-  max-height: 40px;
-  height: 40px;
-}
-
-.footer-text {
-  text-align: center;
-  font-size: 0.9rem;
-  font-weight: 500;
-  max-width: 50%;
-}
-
-/* ===== Detallets visuals ===== */
-/* Franja sota el H1 com tenies a extra.css */
-.bd-content h1 {
-  border-bottom: 2px solid var(--brand-primary);
-  padding-bottom: .2rem;
-}
-
-
-/* ===== Navbar neta i centrada verticalment ===== */
-.bd-header .navbar {
-  background: #fff;
-  border-bottom: 1px solid #eee;
-  padding: .5rem 1rem;
-  display: flex;
-  align-items: center;             /* centra verticalment logos + menú */
-  justify-content: space-between;
-}
-
-.bd-header .navbar .container,
-.bd-header .navbar .container-lg,
-.bd-header .navbar .container-xl {
-  display: flex;
-  align-items: center;             /* centra verticalment logos + menú */
-  justify-content: space-between;
-  gap: 1rem;
-}
-
-/* Oculta el logo d'origen del tema (si no el vols) */
+/* Oculta el logo per defecte del tema */
 .navbar-brand img { display: none; }
 
-/* ===== Bloc de logos a l'esquerra ===== */
-.jb-navbar-logos {
-  display: flex;
-  align-items: center;             /* alineat amb el menú */
-  gap: 1rem;
-  margin-right: .5rem;             /* un pel d'aire abans del menú */
-}
-
-/* Mides “bones”: més altets però sense desbordar */
-.jb-navbar-logos .logo-just {
-  height: 60px;                    /* puja o baixa al gust */
-  width: auto;
-}
-
-.jb-navbar-logos .logo-gvanext {
-  height: 45px;                    /* lleugerament més menut */
-  width: auto;
-}
-
-/* En mòbil, deixem només el primer perquè no es menge la barra */
-@media (max-width: 992px) {
-  .jb-navbar-logos .logo-gvanext { display: none; }
-}
-
-/* El menú també centrat verticalment */
-.bd-header .navbar-nav {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-
-/* Ajustar posició del bloc de logos */
-.jb-navbar-logos {
-  display: flex;
-  align-items: flex-start;   /* pugen un poc */
-  gap: 1rem;
-  margin-left: 2rem;         /* més a la dreta */
-  margin-top: -5px;          /* pujar lleugerament */
-}
-
-/* Ajustar cada logo si cal */
-.jb-navbar-logos .jb-logo-just {
-  width: 7vw;
-  height: 8vh;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-.jb-navbar-logos .jb-logo-gvanext {
-  width: 15vw;
-  height: 5vh;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-}
 /* === HEADER: posició i alineació dels logos (classe correcta) === */
 .bd-header .navbar .jb-header-logos {
   display: flex;
@@ -221,7 +58,79 @@ body {
   background-position: center;
 }
 
-/* En mòbil, amaguem el segon perquè no ocupe massa */
+/* En mòbil, amaguem el segon logo */
 @media (max-width: 992px) {
   .bd-header .navbar .jb-header-logos .jb-logo-gvanext { display: none; }
+}
+
+/* ===== FONS DE PÀGINA ===== */
+body {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.7)),
+    url("../../assets/img/fondo.png");
+  background-size: cover;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* ===== FOOTER BASE (PyData) ===== */
+.bd-footer { background: #fff; }
+
+/* Footer personalitzat */
+.custom-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2vw;
+  width: 100%;
+  background-color: white;
+  padding: 2vh 5vw;
+  color: black;
+  box-sizing: border-box;
+  min-height: 10vh;
+  border-top: 2px solid #ddd;
+}
+
+.footer-logo img {
+  max-height: 40px;
+  height: 40px;
+}
+
+.footer-text {
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 500;
+  max-width: 50%;
+}
+
+/* ===== Detallets visuals ===== */
+.bd-content h1 {
+  border-bottom: 2px solid var(--brand-primary);
+  padding-bottom: .2rem;
+}
+
+/* Navbar neta i centrada verticalment */
+.bd-header .navbar {
+  background: #fff;
+  border-bottom: 1px solid #eee;
+  padding: .5rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.bd-header .navbar .container,
+.bd-header .navbar .container-lg,
+.bd-header .navbar .container-xl {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.bd-header .navbar-nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
