@@ -432,13 +432,24 @@
                   
   <section id="guia-rapida">
 <h1>Guia ràpida<a class="headerlink" href="#guia-rapida" title="Enllaça amb aquesta capçalera">#</a></h1>
-<section id="desenvolupament-en-local">
-<h2>1) Desenvolupament en local<a class="headerlink" href="#desenvolupament-en-local" title="Enllaça amb aquesta capçalera">#</a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
+<section id="desenvolupament-en-local-no-es-necessari">
+<h2>1) Desenvolupament en local(no és necessari)<a class="headerlink" href="#desenvolupament-en-local-no-es-necessari" title="Enllaça amb aquesta capçalera">#</a></h2>
+<p>No és necessari treballar en local: la plantilla ja està preparada perquè GitHub compile la documentació i la publique automàticament quan faces push a main.
+Si vols treballar i previsualitzar en local abans de publicar, segueix les instruccions indicades:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1) Crear i activar l&#39;entorn virtual</span>
+python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
 <span class="nb">source</span><span class="w"> </span>.venv/bin/activate
-pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt<span class="w">   </span><span class="c1"># opcional si uses el contenidor del workflow</span>
-sphinx-build<span class="w"> </span>-b<span class="w"> </span>html<span class="w"> </span>docs<span class="w"> </span>docs/_build/html
-python<span class="w"> </span>-m<span class="w"> </span>http.server<span class="w"> </span>-d<span class="w"> </span>docs/_build/html<span class="w"> </span><span class="m">8000</span>
+
+<span class="c1"># 2) Instal·lar dependències (o usa el contenidor del workflow)</span>
+pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+
+<span class="c1"># 3) Compilar l&#39;HTML (des de l&#39;arrel del repo)</span>
+sphinx-build<span class="w"> </span>-b<span class="w"> </span>html<span class="w"> </span>docs<span class="w"> </span>_build/html
+
+<span class="c1"># 4) Obrir en el navegador (tria el teu sistema)</span>
+xdg-open<span class="w"> </span>_build/html/index.html<span class="w">        </span><span class="c1"># Linux</span>
+<span class="c1"># open _build/html/index.html          # macOS</span>
+<span class="c1"># start _build/html/index.html         # Windows (PowerShell)</span>
 </pre></div>
 </div>
 </section>
@@ -457,7 +468,13 @@ python<span class="w"> </span>-m<span class="w"> </span>http.server<span class="
 </section>
 <section id="publicacio">
 <h2>3) Publicació<a class="headerlink" href="#publicacio" title="Enllaça amb aquesta capçalera">#</a></h2>
-<p>Només cal fer <em>push</em> a <code class="docutils literal notranslate"><span class="pre">main</span></code>. El workflow compila <strong>HTML</strong> i <strong>PDF</strong> i els puja a <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code>.</p>
+<p>Només cal fer <em>push</em> a <code class="docutils literal notranslate"><span class="pre">main</span></code>. El workflow compila <strong>HTML</strong> i <strong>PDF</strong> i els puja a <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code>.
+Abans, guarda i envia els canvis amb:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">add</span> <span class="o">.</span>
+<span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s2">&quot;Actualització de contingut&quot;</span>
+<span class="n">git</span> <span class="n">push</span>
+</pre></div>
+</div>
 </section>
 </section>
 
@@ -508,7 +525,7 @@ python<span class="w"> </span>-m<span class="w"> </span>http.server<span class="
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#desenvolupament-en-local">1) Desenvolupament en local</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#desenvolupament-en-local-no-es-necessari">1) Desenvolupament en local(no és necessari)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estructura">2) Estructura</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publicacio">3) Publicació</a></li>
 </ul>
