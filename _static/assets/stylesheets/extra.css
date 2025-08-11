@@ -441,3 +441,25 @@ table.custom-table tr:nth-child(even) td {
 .grid-cards > *:nth-child(18) { background-color: #ffc107; color: black; }
 .grid-cards > *:nth-child(19) { background-color: #4a90e2; color: white; }
 .grid-cards > *:nth-child(20) { background-color: #4caf50; color: white; }
+
+
+/* ─── Columna dreta (TOC "Aquesta pàgina") transparent ─── */
+.bd-sidebar-secondary {
+    background-color: transparent !important;
+    box-shadow: none !important;
+    border-left: none !important;
+}
+
+/* TOC intern sense targeta blanca */
+.bd-sidebar-secondary .tocsection,
+.bd-sidebar-secondary .bd-toc {
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Títol "Aquesta pàgina" sense fons */
+.bd-sidebar-secondary .sidebar-header,
+.bd-sidebar-secondary .toc-title {
+    background-color: transparent !important;
+}
