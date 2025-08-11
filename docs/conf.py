@@ -120,7 +120,7 @@ latex_documents = [
 templates_path = ["_templates"]
 
 html_theme_options.update({
-    "content_width": "1100px",   # 1000–1200px sol quedar molt apanyat
+    
     # afegim un slot “custom” a l'inici de la navbar
     "navbar_start": ["navbar-logo", "jb-header-logos"],  # conserva el logo del tema i el nostre bloc
 })
