@@ -18,11 +18,13 @@ L'script:
 - crea el repo a GitHub i activa **Pages** sobre `gh-pages`.
 
 
-[COPIA-PEGA]
+
 {button-link} https://github.com/juatafe/plantilla-sphinx.git
 :color: primary
 :shadow:
 :expand:
 
 Clona la plantilla a GitHub
-[/COPIA-PEGA]
+
+
+{download}Descarrega l’script nou_sphinx_repo.sh <scripts/nou_sphinx_repo.sh>
