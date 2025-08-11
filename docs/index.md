@@ -6,17 +6,17 @@ Benvinguda! Esta és la portada de la plantilla. A sota tens una vista ràpida i
 :gutter: 2
 
 :::{card} Guia ràpida
-:link: guia-rapida.md
+:link: guia-rapida
 **Comandes** i flux bàsic per a treballar en local i publicar.
 :::
 
 :::{card} Personalització
-:link: personalitzacio.md
+:link: personalitzacio
 Canvia tema, logo, CSS i opcions del `conf.py`.
 :::
 
 :::{card} Duplicar amb script
-:link: duplicar-plantilla.md
+:link: duplicar-plantilla
 Com usar `scripts/nou_sphinx_repo.sh` per a clonar i personalitzar.
 :::
 ```
