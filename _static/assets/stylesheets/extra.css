@@ -198,3 +198,26 @@
 .bd-main .bd-content .bd-article-container {
   max-width: 1100px !important;
 }
+
+
+/* Lateral esquerre transparent i sense ombra/borda */
+.bd-sidebar-primary {
+background: transparent !important;
+box-shadow: none !important;
+border: 0 !important;
+}
+
+/* Amaga el títol “Navegació de la Secció” si molesta */
+.bd-sidebar-primary .sidebar-title {
+display: none;
+}
+
+/* Amaga el contenidor si no té enllaços (navegació buida) – suport modern */
+.bd-sidebar-primary .sidebar-primary-items:has(nav ul li) { display: block; }
+.bd-sidebar-primary .sidebar-primary-items:not(:has(nav ul li)) { display: none; }
+
+/* Opcional: espaiat més compacte del menú */
+.bd-sidebar-primary nav ul {
+margin: 0;
+padding: 0.25rem 0;
+}
