@@ -62,7 +62,7 @@ https://<usuari>.github.io/<repo>
 ```
 
 ---
-
+<!-- 
 ## 📂 Accions ràpides
 
 ```{button-link} https://github.com/juatafe/plantilla-sphinx.git
@@ -108,4 +108,4 @@ Perquè esta pàgina tinga “Navegació de la Secció”:
 
 1. Ha d’estar inclosa en una `toctree` (p. ex., a `index.md`).
 2. El `:maxdepth:` ha de ser almenys 1 o 2.
-3. I no amagues `.sidebar-primary-items` amb CSS si no vols!
+3. I no amagues `.sidebar-primary-items` amb CSS si no vols! -->
