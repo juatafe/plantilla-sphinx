@@ -190,3 +190,38 @@ body {
   background-repeat: no-repeat;
   background-position: center;
 }
+/* === HEADER: posició i alineació dels logos (classe correcta) === */
+.bd-header .navbar .jb-header-logos {
+  display: flex;
+  align-items: center;        /* alineats amb el menú */
+  gap: 1rem;
+  margin-left: 2rem;          /* més cap a la dreta */
+  transform: translateY(-2px);/* un pèl més amunt */
+}
+
+/* Logo IES Jaume II */
+.bd-header .navbar .jb-header-logos .jb-logo-just {
+  display: inline-block;
+  width: 7vw;
+  height: 8vh;
+  background-image: url("../../assets/img/logos/logoJust.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Logo GVA Next */
+.bd-header .navbar .jb-header-logos .jb-logo-gvanext {
+  display: inline-block;
+  width: 15vw;
+  height: 5vh;
+  background-image: url("../../assets/img/logos/GvaNext.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* En mòbil, amaguem el segon perquè no ocupe massa */
+@media (max-width: 992px) {
+  .bd-header .navbar .jb-header-logos .jb-logo-gvanext { display: none; }
+}
