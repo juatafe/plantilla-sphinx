@@ -1,136 +1,108 @@
 /* ===== Paleta (adaptada) ===== */
-:root {
-  --brand-primary: #660099;  /* Morat */
-  --brand-accent:  #F39200;  /* Taronja */
+:root{
+  --brand-primary:#660099;  /* Morat */
+  --brand-accent:#F39200;   /* Taronja */
 }
 
 /* ===== HEADER (PyData) ===== */
-
-/* Barra superior */
-.bd-header .navbar {
-  background-color: #fff;
-  color: var(--brand-primary);
-  min-height: 10vh;
+.bd-header .navbar{
+  background:#fff;
+  color:var(--brand-primary);
+  border-bottom:1px solid #eee;
+  min-height:64px;          /* alçada raonable de barra */
+  padding:.25rem 1rem;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  overflow:hidden;          /* amaga qualsevol “sobreeixit” */
 }
 
 /* Contenidor interior */
-.bd-header .navbar .container-xl,
+.bd-header .navbar .container,
 .bd-header .navbar .container-lg,
-.bd-header .navbar .container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-left: 1vw;
-  padding-right: 1vw;
+.bd-header .navbar .container-xl{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1rem;
+  padding-left:1vw;
+  padding-right:1vw;
 }
 
-/* Oculta el logo per defecte del tema */
-.navbar-brand img { display: none; }
+/* Ocultar el logo del tema (fem servir els nostres) */
+.navbar-brand img{ display:none; }
 
-/* === HEADER: posició i alineació dels logos (classe correcta) === */
-.bd-header .navbar .jb-header-logos {
-  display: flex;
-  align-items: center;        /* alineats amb el menú */
-  gap: 1rem;
-  margin-left: 2rem;          /* més cap a la dreta */
-  transform: translateY(-2px);/* un pèl més amunt */
+/* ===== Bloc de logos definit al conf.py: jb-header-logos ===== */
+.bd-header .navbar .jb-header-logos{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-left:16px;         /* una mica més a la dreta */
 }
 
-/* Logo IES Jaume II */
-.bd-header .navbar .jb-header-logos .jb-logo-just {
-  display: inline-block;
-  width: 7vw;
-  height: 8vh;
-  background-image: url("../../assets/img/logos/logoJust.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
+/* Logo IES */
+.bd-header .navbar .jb-header-logos .jb-logo-just{
+  display:inline-block;
+  height:40px;                             /* controla alçada */
+  width:clamp(90px, 12vw, 160px);          /* i amplària */
+  background:url("../../assets/img/logos/logoJust.png") center/contain no-repeat;
 }
 
 /* Logo GVA Next */
-.bd-header .navbar .jb-header-logos .jb-logo-gvanext {
-  display: inline-block;
-  width: 15vw;
-  height: 5vh;
-  background-image: url("../../assets/img/logos/GvaNext.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
+.bd-header .navbar .jb-header-logos .jb-logo-gvanext{
+  display:inline-block;
+  height:34px;
+  width:clamp(120px, 18vw, 220px);
+  background:url("../../assets/img/logos/GvaNext.png") center/contain no-repeat;
 }
 
-/* En mòbil, amaguem el segon logo */
-@media (max-width: 992px) {
-  .bd-header .navbar .jb-header-logos .jb-logo-gvanext { display: none; }
+/* En mòbil, amaga el segon logo perquè no ocupe massa */
+@media (max-width: 992px){
+  .bd-header .navbar .jb-header-logos .jb-logo-gvanext{ display:none; }
 }
 
-/* ===== FONS DE PÀGINA ===== */
-body {
+/* Evitar conflictes: qualsevol classe antiga no usada */
+.jb-navbar-logos{ display:none !important; }
+
+/* Menú alineat verticalment */
+.bd-header .navbar-nav{
+  display:flex;
+  align-items:center;
+  gap:1rem;
+}
+
+/* ===== COS I FONS ===== */
+body{
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.7)),
+    linear-gradient(rgba(255,255,255,.1), rgba(255,255,255,.7)),
     url("../../assets/img/fondo.png");
-  background-size: cover;
-  background-position: center bottom;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-size:cover;
+  background-position:center bottom;
+  background-repeat:no-repeat;
+  background-attachment:fixed;
 }
 
-/* ===== FOOTER BASE (PyData) ===== */
-.bd-footer { background: #fff; }
-
-/* Footer personalitzat */
-.custom-footer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 2vw;
-  width: 100%;
-  background-color: white;
-  padding: 2vh 5vw;
-  color: black;
-  box-sizing: border-box;
-  min-height: 10vh;
-  border-top: 2px solid #ddd;
+/* Franja sota H1 */
+.bd-content h1{
+  border-bottom:2px solid var(--brand-primary);
+  padding-bottom:.2rem;
 }
 
-.footer-logo img {
-  max-height: 40px;
-  height: 40px;
-}
+/* ===== FOOTER ===== */
+.bd-footer{ background:#fff; }
 
-.footer-text {
-  text-align: center;
-  font-size: 0.9rem;
-  font-weight: 500;
-  max-width: 50%;
+.custom-footer{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:2vw;
+  width:100%;
+  background:#fff;
+  padding:2vh 5vw;
+  color:#000;
+  box-sizing:border-box;
+  min-height:10vh;
+  border-top:2px solid #ddd;
 }
-
-/* ===== Detallets visuals ===== */
-.bd-content h1 {
-  border-bottom: 2px solid var(--brand-primary);
-  padding-bottom: .2rem;
-}
-
-/* Navbar neta i centrada verticalment */
-.bd-header .navbar {
-  background: #fff;
-  border-bottom: 1px solid #eee;
-  padding: .5rem 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.bd-header .navbar .container,
-.bd-header .navbar .container-lg,
-.bd-header .navbar .container-xl {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-}
-
-.bd-header .navbar-nav {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
+.footer-logo img{ max-height:40px; height:40px; }
+.footer-text{ text-align:center; font-size:.9rem; font-weight:500; max-width:50%; }
