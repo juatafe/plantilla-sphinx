@@ -163,3 +163,30 @@ body {
   align-items: center;
   gap: 1rem;
 }
+
+
+/* Ajustar posició del bloc de logos */
+.jb-navbar-logos {
+  display: flex;
+  align-items: flex-start;   /* pugen un poc */
+  gap: 1rem;
+  margin-left: 2rem;         /* més a la dreta */
+  margin-top: -5px;          /* pujar lleugerament */
+}
+
+/* Ajustar cada logo si cal */
+.jb-navbar-logos .jb-logo-just {
+  width: 7vw;
+  height: 8vh;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.jb-navbar-logos .jb-logo-gvanext {
+  width: 15vw;
+  height: 5vh;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
