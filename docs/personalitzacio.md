@@ -4,6 +4,7 @@ El fitxer `conf.py` és el cor del projecte Sphinx. Ací pots configurar el tema
 
 ---
 ```{toctree}
+:hidden:
 :maxdepth: 2
 ```
 ## Tema i opcions visuals
