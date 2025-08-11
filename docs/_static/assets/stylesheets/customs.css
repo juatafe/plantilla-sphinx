@@ -106,3 +106,37 @@ body{
 }
 .footer-logo img{ max-height:40px; height:40px; }
 .footer-text{ text-align:center; font-size:.9rem; font-weight:500; max-width:50%; }
+
+
+/* Ajust real sobre la classe existent */
+.bd-header .navbar .jb-navbar-logos {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-left: 2rem;           /* més cap a la dreta */
+  transform: translateY(-2px); /* un pèl més amunt */
+}
+
+.bd-header .navbar .jb-navbar-logos .jb-logo-just {
+  width: 7vw;
+  height: 8vh;
+  background-image: url("../../assets/img/logos/logoJust.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.bd-header .navbar .jb-navbar-logos .jb-logo-gvanext {
+  width: 15vw;
+  height: 5vh;
+  background-image: url("../../assets/img/logos/GvaNext.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+@media (max-width: 992px) {
+  .bd-header .navbar .jb-navbar-logos .jb-logo-gvanext {
+    display: none;
+  }
+}
