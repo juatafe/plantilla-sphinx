@@ -21,7 +21,7 @@ fi
 NOU_REPO="$1"
 TITOL="$2"
 USUARI="$3"
-ORIGEN="${4:-https://github.com/juatafe/sge.git}"   # repo base per defecte
+ORIGEN="${4:-https://github.com/juatafe/plantilla-sphinx.git}"   # repo base per defecte
 PDF_NAME="${5:-${NOU_REPO}.pdf}"                    # PDF per defecte = nom del repo
 
 # ——— Dependències
