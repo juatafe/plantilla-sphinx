@@ -78,6 +78,9 @@ jobs:
 
   build-deploy:
     needs: [check-image, build-container]
+    # 👉 Executa encara que build-container s'haja "skipped".
+    # Si calia construir (needs_build == 'true'), espera que build-container acabe bé.
+    if: ${{ always() && needs.check-image.result == 'success' && (needs.check-image.outputs.needs_build == 'false' || needs.build-container.result == 'success') }}
     runs-on: ubuntu-latest
     container:
       image: ghcr.io/${{ github.repository_owner }}/sphinx-latex:latest
