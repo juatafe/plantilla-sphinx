@@ -127,24 +127,30 @@ jobs:
 
       - name: Ensure Pages config (self-healing)
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          OWNER: ${{ github.repository_owner }}
-          REPO:  ${{ github.event.repository.name }}
+            GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            OWNER: ${{ github.repository_owner }}
+            REPO:  ${{ github.event.repository.name }}
         run: |
-          # 1) Força Pages a usar GitHub Actions
-          curl -sSL -X PUT \
+            # 1) Posa Pages a 'GitHub Actions'
+            curl -sSL -X PUT \
             -H "Accept: application/vnd.github+json" \
             -H "Authorization: Bearer $GH_TOKEN" \
             https://api.github.com/repos/$OWNER/$REPO/pages \
-            -d '{"build_type":"workflow"}' || true
+            -d '{"build_type":"workflow"}'
 
-          # 2) Lleva restricció de branques a l'entorn 'github-pages'
-          curl -sSL -X PUT \
+            # 2) Activa polítiques personalitzades de branques
+            curl -sSL -X PUT \
             -H "Accept: application/vnd.github+json" \
             -H "Authorization: Bearer $GH_TOKEN" \
             https://api.github.com/repos/$OWNER/$REPO/environments/github-pages \
-            -d '{"deployment_branch_policy":{"protected_branches":false,"custom_branch_policies":false},"can_admins_bypass":true}' || true
+            -d '{"deployment_branch_policy":{"protected_branches":false,"custom_branch_policies":true},"can_admins_bypass":true}'
 
+            # 3) Afig regla explícita per a la branca 'main'
+            curl -sSL -X PUT \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            https://api.github.com/repos/$OWNER/$REPO/environments/github-pages/deployment-branch-policies/main \
+            -d '{}'
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
