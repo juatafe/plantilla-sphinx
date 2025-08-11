@@ -305,8 +305,9 @@
   .bd-header .navbar .jb-navbar-logos .logo-gvanext { display: none; }
 }
 /* Amaga el contenidor si no té enllaços */
-.bd-sidebar-primary .sidebar-primary-items:not(:has(nav ul li)) { display: none; }
-
+/* .bd-sidebar-primary .sidebar-primary-items:not(:has(nav ul li)) { display: none; } */
+/* Mostra sempre el contenidor; el tema ja gestiona l’estat buit */
+.bd-sidebar-primary .sidebar-primary-items { display: block; }
 
 /* ======= Laterals en blanc només en mòbil ======= */
 @media (max-width: 992px) {
