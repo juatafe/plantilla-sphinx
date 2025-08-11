@@ -432,24 +432,96 @@
                   
   <section id="personalitzacio">
 <h1>Personalització<a class="headerlink" href="#personalitzacio" title="Enllaça amb aquesta capçalera">#</a></h1>
-<section id="tema-i-opcions">
-<h2>Tema i opcions<a class="headerlink" href="#tema-i-opcions" title="Enllaça amb aquesta capçalera">#</a></h2>
-<p>El tema està en <code class="docutils literal notranslate"><span class="pre">conf.py</span></code>:</p>
+<p>El fitxer <code class="docutils literal notranslate"><span class="pre">conf.py</span></code> és el cor del projecte Sphinx. Ací pots configurar el tema, els estils, els logos, les opcions de navegació, i la generació del PDF.</p>
+<hr class="docutils" />
+<div class="toctree-wrapper compound">
+</div>
+<section id="tema-i-opcions-visuals">
+<h2>Tema i opcions visuals<a class="headerlink" href="#tema-i-opcions-visuals" title="Enllaça amb aquesta capçalera">#</a></h2>
+<p>El tema utilitzat és <strong>PyData Sphinx Theme</strong>, un tema modern i molt configurable:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">html_theme</span> <span class="o">=</span> <span class="s2">&quot;pydata_sphinx_theme&quot;</span>
-<span class="n">html_theme_options</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&quot;show_prev_next&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="o">...</span> <span class="p">}</span>
+<span class="n">html_theme_options</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;show_nav_level&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>          <span class="c1"># Mostra des del nivell 1 del TOC</span>
+    <span class="s2">&quot;navigation_depth&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>        <span class="c1"># Profunditat màxima del menú lateral</span>
+    <span class="s2">&quot;collapse_navigation&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="c1"># Evita que es col·lapse automàticament</span>
+    <span class="s2">&quot;secondary_sidebar_items&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;page-toc&quot;</span><span class="p">,</span> <span class="s2">&quot;sourcelink&quot;</span><span class="p">,</span> <span class="s2">&quot;edit-this-page&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;use_edit_page_button&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="s2">&quot;show_prev_next&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="s2">&quot;show_toc_level&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="s2">&quot;navbar_end&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;theme-switcher&quot;</span><span class="p">,</span> <span class="s2">&quot;navbar-icon-links&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;icon_links&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;GitHub&quot;</span><span class="p">,</span> <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;...&quot;</span><span class="p">,</span> <span class="s2">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;fa-brands fa-github&quot;</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Issues&quot;</span><span class="p">,</span> <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;...&quot;</span><span class="p">,</span> <span class="s2">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;fa-solid fa-circle-exclamation&quot;</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;PDF&quot;</span><span class="p">,</span> <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="n">pdf_url</span><span class="p">,</span> <span class="s2">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;fa-solid fa-file-pdf&quot;</span><span class="p">},</span>
+    <span class="p">],</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </section>
+<hr class="docutils" />
 <section id="logos-i-favicon">
 <h2>Logos i favicon<a class="headerlink" href="#logos-i-favicon" title="Enllaça amb aquesta capçalera">#</a></h2>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">html_logo</span> <span class="pre">=</span> <span class="pre">&quot;_static/assets/img/logos/logoJust.png&quot;</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">html_favicon</span> <span class="pre">=</span> <span class="pre">&quot;_static/assets/img/logos/logo50.ico&quot;</span></code></p></li>
-</ul>
+<p>Es defineixen així dins del bloc HTML:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">html_logo</span> <span class="o">=</span> <span class="s2">&quot;_static/assets/img/logos/logoJust.png&quot;</span>
+<span class="n">html_favicon</span> <span class="o">=</span> <span class="s2">&quot;_static/assets/img/logos/logo50.ico&quot;</span>
+</pre></div>
+</div>
+<p>Pots substituir-los per les teues pròpies imatges mantenint la ruta dins de <code class="docutils literal notranslate"><span class="pre">docs/_static/...</span></code>.</p>
 </section>
-<section id="css-propi">
-<h2>CSS propi<a class="headerlink" href="#css-propi" title="Enllaça amb aquesta capçalera">#</a></h2>
-<p>Afig els teus CSS a <code class="docutils literal notranslate"><span class="pre">_static/assets/stylesheets/</span></code> i declara’ls en <code class="docutils literal notranslate"><span class="pre">html_css_files</span></code> (ordre de més general a més específic).</p>
+<hr class="docutils" />
+<section id="fulls-destil-css">
+<h2>Fulls d’estil (CSS)<a class="headerlink" href="#fulls-destil-css" title="Enllaça amb aquesta capçalera">#</a></h2>
+<p>El paràmetre <code class="docutils literal notranslate"><span class="pre">html_css_files</span></code> permet carregar fulls d’estil personalitzats. L’ordre és important: van del més general al més específic.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">html_css_files</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;assets/stylesheets/extracsspdf.css&quot;</span><span class="p">,</span>  <span class="c1"># estil per a PDF</span>
+    <span class="s2">&quot;assets/stylesheets/customs.css&quot;</span><span class="p">,</span>      <span class="c1"># layout general</span>
+    <span class="s2">&quot;assets/stylesheets/extra.css&quot;</span><span class="p">,</span>        <span class="c1"># modificacions puntuals</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>Els fitxers han d’estar dins de <code class="docutils literal notranslate"><span class="pre">docs/_static/</span></code>. Recomanat: crea subcarpetes (<code class="docutils literal notranslate"><span class="pre">assets/stylesheets/</span></code>) per mantindre net el projecte.</p>
+</section>
+<hr class="docutils" />
+<section id="plantilles-html-i-rutes">
+<h2>Plantilles HTML i rutes<a class="headerlink" href="#plantilles-html-i-rutes" title="Enllaça amb aquesta capçalera">#</a></h2>
+<p>Si necessites modificar la distribució HTML, declara la carpeta de plantilles:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">templates_path</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;_templates&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Aquesta ruta conté fitxers <code class="docutils literal notranslate"><span class="pre">.html</span></code> que sobreescriuen parcialment els del tema. Pots personalitzar, per exemple, el layout base, els blocs de la barra lateral o la capçalera.</p>
+</section>
+<hr class="docutils" />
+<section id="pdf-titol-fonts-i-llengua">
+<h2>PDF: títol, fonts i llengua<a class="headerlink" href="#pdf-titol-fonts-i-llengua" title="Enllaça amb aquesta capçalera">#</a></h2>
+<p>La generació del PDF via LaTeX es configura amb:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">latex_engine</span> <span class="o">=</span> <span class="s2">&quot;xelatex&quot;</span>
+
+<span class="n">latex_elements</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;fontpkg&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">\usepackage</span><span class="si">{fontspec}</span>
+<span class="s2">\setmainfont{TeX Gyre Pagella}</span>
+<span class="s2">\setsansfont{TeX Gyre Heros}</span>
+<span class="s2">\setmonofont{Latin Modern Mono}</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;preamble&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">\usepackage</span><span class="si">{polyglossia}</span>
+<span class="s2">\setmainlanguage</span><span class="si">{catalan}</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Aquest fragment assegura que el PDF utilitza fonts modernes i correcte llengua (valencià/català). Pots substituir les fonts si ho necessites.</p>
+</section>
+<hr class="docutils" />
+<section id="pdf-nom-fix-segons-el-repositori">
+<h2>PDF: nom fix segons el repositori<a class="headerlink" href="#pdf-nom-fix-segons-el-repositori" title="Enllaça amb aquesta capçalera">#</a></h2>
+<p>El nom del PDF es genera automàticament a partir del repositori GitHub:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">_repo</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;GITHUB_REPOSITORY&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="n">site_slug</span> <span class="o">=</span> <span class="n">_repo</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="n">_repo</span> <span class="k">else</span> <span class="n">slugify</span><span class="p">(</span><span class="n">project</span><span class="p">)</span>
+<span class="n">pdf_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;pdf/</span><span class="si">{</span><span class="n">site_slug</span><span class="si">}</span><span class="s2">.pdf&quot;</span>
+</pre></div>
+</div>
+<p>Això assegura que el fitxer <code class="docutils literal notranslate"><span class="pre">.pdf</span></code> tinga un nom coherent amb el repo (ideal per a repositoris educatius).</p>
 </section>
 </section>
 
@@ -500,9 +572,12 @@
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tema-i-opcions">Tema i opcions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tema-i-opcions-visuals">Tema i opcions visuals</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logos-i-favicon">Logos i favicon</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#css-propi">CSS propi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fulls-destil-css">Fulls d’estil (CSS)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plantilles-html-i-rutes">Plantilles HTML i rutes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pdf-titol-fonts-i-llengua">PDF: títol, fonts i llengua</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pdf-nom-fix-segons-el-repositori">PDF: nom fix segons el repositori</a></li>
 </ul>
   </nav></div>
 
