@@ -125,17 +125,26 @@ jobs:
           name: site-pdf
           path: docs/_build/latex/*.pdf
 
-      - name: Ensure Pages is set to GitHub Actions (self-healing)
+      - name: Ensure Pages config (self-healing)
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           OWNER: ${{ github.repository_owner }}
           REPO:  ${{ github.event.repository.name }}
         run: |
+          # 1) Força Pages a usar GitHub Actions
           curl -sSL -X PUT \
             -H "Accept: application/vnd.github+json" \
             -H "Authorization: Bearer $GH_TOKEN" \
             https://api.github.com/repos/$OWNER/$REPO/pages \
             -d '{"build_type":"workflow"}' || true
+
+          # 2) Lleva restricció de branques a l'entorn 'github-pages'
+          curl -sSL -X PUT \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            https://api.github.com/repos/$OWNER/$REPO/environments/github-pages \
+            -d '{"deployment_branch_policy":{"protected_branches":false,"custom_branch_policies":false},"can_admins_bypass":true}' || true
+
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
