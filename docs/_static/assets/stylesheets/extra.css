@@ -221,3 +221,36 @@ display: none;
 margin: 0;
 padding: 0.25rem 0;
 }
+
+/* Ajust real sobre la classe existent per als logos */
+.bd-header .navbar .jb-navbar-logos {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-left: 2rem;           /* més cap a la dreta */
+  transform: translateY(-2px); /* un pèl més amunt */
+}
+
+.bd-header .navbar .jb-navbar-logos .jb-logo-just {
+  width: 7vw;
+  height: 8vh;
+  background-image: url("../../assets/img/logos/logoJust.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.bd-header .navbar .jb-navbar-logos .jb-logo-gvanext {
+  width: 15vw;
+  height: 5vh;
+  background-image: url("../../assets/img/logos/GvaNext.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+@media (max-width: 992px) {
+  .bd-header .navbar .jb-navbar-logos .jb-logo-gvanext {
+    display: none;
+  }
+}
