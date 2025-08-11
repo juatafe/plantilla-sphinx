@@ -96,6 +96,7 @@ latex_elements = {
 \setmainlanguage{catalan}
 """
 }
+# Opcions de LaTeX
 
 
 # Plantilles personalitzades (si cal)
