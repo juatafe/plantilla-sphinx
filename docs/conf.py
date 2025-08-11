@@ -1,5 +1,6 @@
 import os
 import sys
+import re
 sys.path.append(os.path.abspath("."))
 
 # ──────────────── Projecte ────────────────
@@ -37,6 +38,17 @@ html_css_files = [
     "assets/stylesheets/extra.css",
 ]
 
+def slugify(s: str) -> str:
+    return re.sub(r'[^A-Za-z0-9]+', '-', s).strip('-').lower()
+
+# Si el repo és "usuari/repo", agarrem "repo"; si no hi ha env (build local), fem servir el títol del projecte
+_repo = os.environ.get("GITHUB_REPOSITORY", "")
+_repo_name = _repo.split("/")[-1] if _repo else ""
+site_slug = _repo_name or slugify(project)
+
+# Enllaç relatiu al PDF dins del site (p. ex. pdf/plantilla-sphinx.pdf)
+pdf_url = f"pdf/{site_slug}.pdf"
+
 # Opcions del tema
 html_theme_options = {
     "use_edit_page_button": True,
@@ -56,7 +68,7 @@ html_theme_options = {
         },
         {
             "name": "PDF",
-            "url": "https://juatafe.github.io/plantilla-sphinx/pdf/plantilla-sphinx.pdf",
+            "url": pdf_url,
             "icon": "fa-solid fa-file-pdf",
         },
     ],
@@ -71,7 +83,7 @@ html_context = {
 }
 
 # Llengua del buscador
-html_search_language = "es"
+html_search_language = "ca"
 
 # ──────────────── LaTeX/PDF ────────────────
 latex_engine = "xelatex"
@@ -96,6 +108,10 @@ latex_elements = {
 \setmainlanguage{catalan}
 """
 }
+latex_documents = [
+    ("index", f"{site_slug}.tex", project, author, "manual"),
+]
+
 # Opcions de LaTeX
 
 

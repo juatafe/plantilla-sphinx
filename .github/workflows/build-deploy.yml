@@ -92,12 +92,25 @@ jobs:
       - name: Build HTML
         run: sphinx-build -b html docs docs/_build/html
 
-      - name: Build PDF (latexpdf)
+      - name: Build PDF (latexpdf) and copy to site/pdf (slug)
         run: |
-          sphinx-build -M latexpdf docs docs/_build
-          mkdir -p docs/_build/html/pdf
-          first_pdf="$(ls -1 docs/_build/latex/*.pdf | head -n1)"
-          cp "$first_pdf" docs/_build/html/pdf/plantilla-sphinx.pdf
+            sphinx-build -M latexpdf docs docs/_build
+
+            REPO_NAME="${GITHUB_REPOSITORY##*/}"
+            SITE_SLUG="${REPO_NAME:-site}"
+
+            mkdir -p docs/_build/html/pdf
+
+            # Sphinx ja genera ${SITE_SLUG}.pdf perquè ho hem definit en latex_documents
+            PDF_PATH="docs/_build/latex/${SITE_SLUG}.pdf"
+            if [ ! -f "$PDF_PATH" ]; then
+            # fallback per si algun dia canvia el nom
+            PDF_PATH="$(ls -1 docs/_build/latex/*.pdf | head -n1)"
+            fi
+
+            cp "$PDF_PATH" "docs/_build/html/pdf/${SITE_SLUG}.pdf"
+            ls -l docs/_build/html/pdf/
+
 
       - name: Disable Jekyll
         run: echo > docs/_build/html/.nojekyll
