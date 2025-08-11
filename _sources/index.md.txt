@@ -1,11 +1,27 @@
-# Apunts d’Odoo
+# Plantilla Sphinx (HTML + PDF)
 
-Benvingut/da als apunts. A la barra lateral tens els temes.
+Benvinguda! Esta és la portada de la plantilla. A sota tens una vista ràpida i enllaços útils.
 
-```{toctree}
-:maxdepth: 2
-:caption: Continguts
+```{grid} 1 1 2 2
+:gutter: 2
 
-odoo
-vista
-accions_menus
+:::{card} Guia ràpida
+:link: guia-rapida.md
+**Comandes** i flux bàsic per a treballar en local i publicar.
+:::
+
+:::{card} Personalització
+:link: personalitzacio.md
+Canvia tema, logo, CSS i opcions del `conf.py`.
+:::
+
+:::{card} Duplicar amb script
+:link: duplicar-plantilla.md
+Com usar `scripts/nou_sphinx_repo.sh` per a clonar i personalitzar.
+:::
+```
+
+## Estat del projecte
+- Tema: **pydata-sphinx-theme**
+- PDF: es publica en `pdf/<slug>.pdf` i apareix com a icona a la barra superior.
+- Build & Deploy: automàtic via **GitHub Actions** → `gh-pages`.

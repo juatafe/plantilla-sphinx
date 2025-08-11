@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Vistes en Odoo &#8212; Repo de plantilla sphinx</title>
+    <title>Guia ràpida &#8212; Repo de plantilla sphinx</title>
   
   
   
@@ -48,12 +48,10 @@
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
     <script src="_static/translations.js?v=5e30842e"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'vista';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'guia-rapida';</script>
     <link rel="icon" href="_static/logo50.ico"/>
     <link rel="index" title="Índex" href="genindex.html" />
     <link rel="search" title="Cerca" href="search.html" />
-    <link rel="next" title="Accions i Menús" href="accions_menus.html" />
-    <link rel="prev" title="Odoo – Introducció" href="odoo.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="ca"/>
   <meta name="docsearch:version" content="" />
@@ -152,26 +150,6 @@
 <nav>
   <ul class="bd-navbar-elements navbar-nav">
     
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="odoo.html">
-    Odoo – Introducció
-  </a>
-</li>
-
-
-<li class="nav-item current active">
-  <a class="nav-link nav-internal" href="#">
-    Vistes en Odoo
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="accions_menus.html">
-    Accions i Menús
-  </a>
-</li>
-
   </ul>
 </nav></div>
       
@@ -269,8 +247,10 @@
       
       
       
+        
+      
       <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
         
 
   
@@ -285,26 +265,6 @@
 <nav>
   <ul class="bd-navbar-elements navbar-nav">
     
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="odoo.html">
-    Odoo – Introducció
-  </a>
-</li>
-
-
-<li class="nav-item current active">
-  <a class="nav-link nav-internal" href="#">
-    Vistes en Odoo
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="accions_menus.html">
-    Accions i Menús
-  </a>
-</li>
-
   </ul>
 </nav></div>
           
@@ -367,15 +327,6 @@
     
   </div>
   
-    <div class="sidebar-primary-items__start sidebar-primary__section">
-        <div class="sidebar-primary-item">
-<nav class="bd-docs-nav bd-links"
-     aria-label="Navegació de la Secció">
-  <p class="bd-links__title" role="heading" aria-level="1">Navegació de la Secció</p>
-  <div class="bd-toc-item navbar-nav"></div>
-</nav></div>
-    </div>
-  
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
       <div class="sidebar-primary-item">
@@ -411,7 +362,7 @@
         <i class="fa-solid fa-home"></i>
       </a>
     </li>
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Vistes en Odoo</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Guia ràpida</span></li>
   </ul>
 </nav>
 </div>
@@ -428,13 +379,34 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="vistes-en-odoo">
-<h1>Vistes en Odoo<a class="headerlink" href="#vistes-en-odoo" title="Enllaça amb aquesta capçalera">#</a></h1>
-<section id="tipus">
-<h2>Tipus<a class="headerlink" href="#tipus" title="Enllaça amb aquesta capçalera">#</a></h2>
-<ul class="simple">
-<li><p>form, tree, kanban, calendar, search…</p></li>
-</ul>
+  <section id="guia-rapida">
+<h1>Guia ràpida<a class="headerlink" href="#guia-rapida" title="Enllaça amb aquesta capçalera">#</a></h1>
+<section id="desenvolupament-en-local">
+<h2>1) Desenvolupament en local<a class="headerlink" href="#desenvolupament-en-local" title="Enllaça amb aquesta capçalera">#</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
+<span class="nb">source</span><span class="w"> </span>.venv/bin/activate
+pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt<span class="w">   </span><span class="c1"># opcional si uses el contenidor del workflow</span>
+sphinx-build<span class="w"> </span>-b<span class="w"> </span>html<span class="w"> </span>docs<span class="w"> </span>docs/_build/html
+python<span class="w"> </span>-m<span class="w"> </span>http.server<span class="w"> </span>-d<span class="w"> </span>docs/_build/html<span class="w"> </span><span class="m">8000</span>
+</pre></div>
+</div>
+</section>
+<section id="estructura">
+<h2>2) Estructura<a class="headerlink" href="#estructura" title="Enllaça amb aquesta capçalera">#</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>docs/
+  ├─ index.md
+  ├─ guia-rapida.md
+  ├─ personalitzacio.md
+  ├─ duplicar-plantilla.md
+  ├─ _static/
+  ├─ _templates/
+  └─ conf.py
+</pre></div>
+</div>
+</section>
+<section id="publicacio">
+<h2>3) Publicació<a class="headerlink" href="#publicacio" title="Enllaça amb aquesta capçalera">#</a></h2>
+<p>Només cal fer <em>push</em> a <code class="docutils literal notranslate"><span class="pre">main</span></code>. El workflow compila <strong>HTML</strong> i <strong>PDF</strong> i els puja a <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code>.</p>
 </section>
 </section>
 
@@ -448,24 +420,6 @@
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="odoo.html"
-       title="pàgina anterior">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">anterior</p>
-        <p class="prev-next-title">Odoo – Introducció</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="accions_menus.html"
-       title="pàgina següent">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">següent</p>
-        <p class="prev-next-title">Accions i Menús</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
@@ -485,7 +439,9 @@
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tipus">Tipus</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#desenvolupament-en-local">1) Desenvolupament en local</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estructura">2) Estructura</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publicacio">3) Publicació</a></li>
 </ul>
   </nav></div>
 
@@ -493,7 +449,7 @@
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/juatafe/plantilla-sphinx/edit/main/docs/vista.md">
+    <a href="https://github.com/juatafe/plantilla-sphinx/edit/main/docs/guia-rapida.md">
       <i class="fa-solid fa-pencil"></i>
       
       
@@ -509,7 +465,7 @@
   <div role="note" aria-label="source link">
     <h3>Aquesta pàgina</h3>
     <ul class="this-page-menu">
-      <li><a href="_sources/vista.md.txt"
+      <li><a href="_sources/guia-rapida.md.txt"
             rel="nofollow">Mostra el codi font</a></li>
     </ul>
    </div></div>
