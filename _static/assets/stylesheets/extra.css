@@ -306,3 +306,31 @@
 }
 /* Amaga el contenidor si no té enllaços */
 .bd-sidebar-primary .sidebar-primary-items:not(:has(nav ul li)) { display: none; }
+
+
+/* ======= Laterals en blanc només en mòbil ======= */
+@media (max-width: 992px) {
+  /* Columna dreta (TOC "Aquesta pàgina") */
+  .bd-sidebar-secondary {
+    background-color: #fff !important;
+    box-shadow: none !important;
+    border-left: none !important;
+  }
+  .bd-sidebar-secondary .tocsection,
+  .bd-sidebar-secondary .bd-toc {
+    background-color: #fff !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+  .bd-sidebar-secondary .sidebar-header,
+  .bd-sidebar-secondary .toc-title {
+    background-color: #fff !important;
+  }
+
+  /* Lateral esquerre (navegació secció) */
+  .bd-sidebar-primary {
+    background-color: #fff !important;
+    box-shadow: none !important;
+    border: 0 !important;
+  }
+}
