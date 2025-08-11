@@ -5,11 +5,10 @@ on:
     branches: [ main ]
   workflow_dispatch: {}
 
+# Necessitem WRITE per a fer push a gh-pages
 permissions:
-  contents: read
-  pages: write
-  id-token: write
-  packages: write  # per pujar imatge si cal
+  contents: write
+  packages: write
 
 concurrency:
   group: "pages"
@@ -22,12 +21,8 @@ jobs:
       has_image: ${{ steps.out.outputs.has_image }}
       dockerfile_changed: ${{ steps.diff.outputs.dockerfile_changed }}
       needs_build: ${{ steps.compute.outputs.needs_build }}
-      image_ref: ${{ steps.meta.outputs.image }}
     steps:
       - uses: actions/checkout@v4
-
-      - id: meta
-        run: echo "image=ghcr.io/${GITHUB_REPOSITORY_OWNER,,}/sphinx-latex:latest" >> "$GITHUB_OUTPUT"
 
       - name: Check if image exists on GHCR
         id: out
@@ -78,13 +73,8 @@ jobs:
 
   build-deploy:
     needs: [check-image, build-container]
-    # 👉 Executa encara que build-container s'haja "skipped".
-    # Si calia construir (needs_build == 'true'), espera que build-container acabe bé.
-    if: ${{ always() && needs.check-image.result == 'success' && (needs.check-image.outputs.needs_build == 'false' || needs.build-container.result == 'success') }}
+    if: ${{ always() && (needs.check-image.outputs.needs_build == 'false' || needs.build-container.result == 'success') }}
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     container:
       image: ghcr.io/${{ github.repository_owner }}/sphinx-latex:latest
       credentials:
@@ -93,7 +83,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # (Opcional) instala deps extra de Python si tens requirements
+      # (Opcional) deps extra
       - name: Install extra Python deps
         run: |
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
@@ -105,61 +95,17 @@ jobs:
       - name: Build PDF (latexpdf)
         run: |
           sphinx-build -M latexpdf docs docs/_build
-          ls -l docs/_build/latex/*.pdf || true
-
-      - name: Copy PDF into HTML site (fixed name)
-        run: |
           mkdir -p docs/_build/html/pdf
           first_pdf="$(ls -1 docs/_build/latex/*.pdf | head -n1)"
           cp "$first_pdf" docs/_build/html/pdf/plantilla-sphinx.pdf
 
-      - name: Upload HTML artifact
-        uses: actions/upload-artifact@v4
+      - name: Disable Jekyll
+        run: echo > docs/_build/html/.nojekyll
+
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          name: site-html
-          path: docs/_build/html
-
-      - name: Upload PDF artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: site-pdf
-          path: docs/_build/latex/*.pdf
-
-      - name: Ensure Pages config (self-healing)
-        env:
-            GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            OWNER: ${{ github.repository_owner }}
-            REPO:  ${{ github.event.repository.name }}
-        run: |
-            # 1) Posa Pages a 'GitHub Actions'
-            curl -sSL -X PUT \
-            -H "Accept: application/vnd.github+json" \
-            -H "Authorization: Bearer $GH_TOKEN" \
-            https://api.github.com/repos/$OWNER/$REPO/pages \
-            -d '{"build_type":"workflow"}'
-
-            # 2) Activa polítiques personalitzades de branques
-            curl -sSL -X PUT \
-            -H "Accept: application/vnd.github+json" \
-            -H "Authorization: Bearer $GH_TOKEN" \
-            https://api.github.com/repos/$OWNER/$REPO/environments/github-pages \
-            -d '{"deployment_branch_policy":{"protected_branches":false,"custom_branch_policies":true},"can_admins_bypass":true}'
-
-            # 3) Afig regla explícita per a la branca 'main'
-            curl -sSL -X PUT \
-            -H "Accept: application/vnd.github+json" \
-            -H "Authorization: Bearer $GH_TOKEN" \
-            https://api.github.com/repos/$OWNER/$REPO/environments/github-pages/deployment-branch-policies/main \
-            -d '{}'
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: docs/_build/html
-
-      - name: Deploy to Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: docs/_build/html
+          # force_orphan: true  # (opcional) crea història neta
