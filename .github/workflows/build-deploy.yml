@@ -125,6 +125,18 @@ jobs:
           name: site-pdf
           path: docs/_build/latex/*.pdf
 
+      - name: Ensure Pages is set to GitHub Actions (self-healing)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OWNER: ${{ github.repository_owner }}
+          REPO:  ${{ github.event.repository.name }}
+        run: |
+          curl -sSL -X PUT \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            https://api.github.com/repos/$OWNER/$REPO/pages \
+            -d '{"build_type":"workflow"}' || true
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
