@@ -35,7 +35,7 @@
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="_static/assets/stylesheets/extracsspdf.css?v=471b9758" />
     <link rel="stylesheet" type="text/css" href="_static/assets/stylesheets/customs.css?v=5ca73458" />
-    <link rel="stylesheet" type="text/css" href="_static/assets/stylesheets/extra.css?v=956418df" />
+    <link rel="stylesheet" type="text/css" href="_static/assets/stylesheets/extra.css?v=dcdf99dc" />
   
   <!-- So that users can add custom icons -->
   <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
@@ -431,49 +431,64 @@
                   
   <section id="duplicar-la-plantilla-amb-l-script">
 <h1>Duplicar la plantilla amb l’script<a class="headerlink" href="#duplicar-la-plantilla-amb-l-script" title="Enllaça amb aquesta capçalera">#</a></h1>
-<p>Aquest script crea un nou repositori Sphinx a partir d’un origen (per defecte, la plantilla), ajusta títols/URLs, fixa el nom del PDF en el workflow i activa GitHub Pages.</p>
+<p>Este script automatitza la creació d’un nou repositori Sphinx:</p>
+<ul class="simple">
+<li><p>clona l’origen (per defecte, la plantilla oficial),</p></li>
+<li><p>reescriu títols i URL en <code class="docutils literal notranslate"><span class="pre">conf.py</span></code>,</p></li>
+<li><p>ajusta el nom del PDF al workflow,</p></li>
+<li><p>crea el repo a GitHub i activa GitHub Pages (<code class="docutils literal notranslate"><span class="pre">gh-pages</span></code>).</p></li>
+</ul>
 <div class="admonition-requisits-per-als-botons admonition">
 <p class="admonition-title">Requisits per als botons</p>
-<p>Per als botons “Clona la plantilla a GitHub”, “Descarrega l’script” i “Descarrega el PDF” cal tindre l’extensió <strong>sphinx_design</strong> habilitada a <code class="docutils literal notranslate"><span class="pre">conf.py</span></code>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s2">&quot;myst_parser&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;sphinx_design&quot;</span><span class="p">,</span>
-<span class="p">]</span>
+<p>Per a que funcionen els botons “Clona la plantilla”, “Descarrega l’script” i “Descarrega el PDF”, has de tindre activada l’extensió <code class="docutils literal notranslate"><span class="pre">sphinx_design</span></code> a <code class="docutils literal notranslate"><span class="pre">conf.py</span></code>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>extensions = [
+    &quot;myst_parser&quot;,
+    &quot;sphinx_design&quot;,
+]
 </pre></div>
 </div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-## Ús
-```bash
-./scripts/nou_sphinx_repo.sh NOU_REPO &quot;Títol nou&quot; UsuariGitHub [ORIGEN] [NomPDF.pdf]
+<hr class="docutils" />
+<section id="us">
+<h2>Ús<a class="headerlink" href="#us" title="Enllaça amb aquesta capçalera">#</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./scripts/nou_sphinx_repo.sh<span class="w"> </span>NOU_REPO<span class="w"> </span><span class="s2">&quot;Títol nou&quot;</span><span class="w"> </span>UsuariGitHub<span class="w"> </span><span class="o">[</span>ORIGEN<span class="o">]</span><span class="w"> </span><span class="o">[</span>NomPDF.pdf<span class="o">]</span>
 </pre></div>
 </div>
-<p><strong>Paràmetres</strong></p>
+<section id="parametres">
+<h3>Paràmetres<a class="headerlink" href="#parametres" title="Enllaça amb aquesta capçalera">#</a></h3>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">NOU_REPO</span></code>: nom del repo nou que es crearà a GitHub.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">&quot;Títol</span> <span class="pre">nou&quot;</span></code>: títol que es posarà al projecte Sphinx.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">UsuariGitHub</span></code>: el teu usuari (o organització) de GitHub.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">[ORIGEN]</span></code> <em>(opcional)</em>: repo origen a clonar. Si no el poses, usa la plantilla.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">[NomPDF.pdf]</span></code> <em>(opcional)</em>: nom fix del PDF que es publicarà.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NOU_REPO</span></code>: nom curt del nou repositori GitHub.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;Títol</span> <span class="pre">nou&quot;</span></code>: títol que apareixerà al lloc web generat.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">UsuariGitHub</span></code>: nom d’usuari o organització on es crearà el repo.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[ORIGEN]</span></code> <em>(opcional)</em>: URL del repo base (per defecte, la plantilla).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[NomPDF.pdf]</span></code> <em>(opcional)</em>: nom fix per al PDF generat.</p></li>
 </ul>
+</section>
+<hr class="docutils" />
 <section id="exemples">
-<h2>Exemples<a class="headerlink" href="#exemples" title="Enllaça amb aquesta capçalera">#</a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Usant la plantilla per defecte</span>
+<h3>Exemples<a class="headerlink" href="#exemples" title="Enllaça amb aquesta capçalera">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Clonar la plantilla bàsica</span>
 ./scripts/nou_sphinx_repo.sh<span class="w"> </span>plantilla-sphinx<span class="w"> </span><span class="s2">&quot;Repo de plantilla sphinx&quot;</span><span class="w"> </span>juatafe
 
-<span class="c1"># Indicant un origen i un nom de PDF personalitzat</span>
+<span class="c1"># Clonar un repositori diferent i fixar nom del PDF</span>
 ./scripts/nou_sphinx_repo.sh<span class="w"> </span>apunts-xarxes<span class="w"> </span><span class="s2">&quot;Apunts de Xarxes&quot;</span><span class="w"> </span>juatafe<span class="w"> </span>https://github.com/juatafe/sge.git<span class="w"> </span>ApuntsDeXarxes.pdf
 </pre></div>
 </div>
 </section>
-<section id="que-fa-l-script">
-<h2>Què fa l’script<a class="headerlink" href="#que-fa-l-script" title="Enllaça amb aquesta capçalera">#</a></h2>
-<ul class="simple">
-<li><p>clona l’origen,</p></li>
-<li><p>reescriu títols i URLs en <code class="docutils literal notranslate"><span class="pre">conf.py</span></code>,</p></li>
-<li><p>ajusta el workflow perquè el PDF tinga <strong>nom fix</strong>,</p></li>
-<li><p>crea el repo a GitHub i activa <strong>Pages</strong> damunt de <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code>.</p></li>
-</ul>
+</section>
+<hr class="docutils" />
+<section id="publicacio">
+<h2>Publicació<a class="headerlink" href="#publicacio" title="Enllaça amb aquesta capçalera">#</a></h2>
+<p>Una vegada creat el repo, només cal afegir canvis i pujar-los:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>.
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Primera personalització&quot;</span>
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main
+</pre></div>
+</div>
+<p>GitHub compilarà automàticament <strong>HTML + PDF</strong> i publicarà el lloc a:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//&lt;</span><span class="n">usuari</span><span class="o">&gt;.</span><span class="n">github</span><span class="o">.</span><span class="n">io</span><span class="o">/&lt;</span><span class="n">repo</span><span class="o">&gt;</span>
+</pre></div>
+</div>
 </section>
 <hr class="docutils" />
 <section id="accions-rapides">
@@ -483,22 +498,26 @@
 <p><span class="sd-d-grid"><a class="sd-sphinx-override sd-btn sd-text-wrap sd-btn-warning sd-shadow-sm reference external" href="../pdf/plantilla-sphinx.pdf"><span>Descarrega el PDF generat</span></a></span></p>
 </section>
 <hr class="docutils" />
-<section id="descarrega-lscript-dins-del-projecte">
-<h2>Descarrega l’script dins del projecte<a class="headerlink" href="#descarrega-lscript-dins-del-projecte" title="Enllaça amb aquesta capçalera">#</a></h2>
-<p><strong>Opció interna recomanada</strong> (si el fitxer està en <code class="docutils literal notranslate"><span class="pre">docs/scripts/</span></code>):</p>
+<section id="descarrega-local-de-lscript">
+<h2>Descarrega local de l’script<a class="headerlink" href="#descarrega-local-de-lscript" title="Enllaça amb aquesta capçalera">#</a></h2>
+<p>Si tens l’script dins del projecte (<code class="docutils literal notranslate"><span class="pre">docs/scripts/</span></code>), pots afegir:</p>
 <p>```<code class="xref download docutils literal notranslate"><span class="pre">Descarrega</span> <span class="pre">l’script</span> <span class="pre">nou_sphinx_repo.sh</span></code></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
 ```{note}
-El rol `{download}` només funciona si el fitxer està dins de la carpeta *source* del teu projecte Sphinx.  
-Si el tens fora, usa l’enllaç “Descarrega l’script” de dalt.
+El rol `{download}` només funciona si el fitxer està dins de la carpeta *source* (`docs/`).  
+Si el tens fora, usa el botó de dalt.
 </pre></div>
 </div>
 </section>
 <hr class="docutils" />
-<section id="nota-sobre-la-navegacio-de-la-seccio">
-<h2>Nota sobre la “Navegació de la Secció”<a class="headerlink" href="#nota-sobre-la-navegacio-de-la-seccio" title="Enllaça amb aquesta capçalera">#</a></h2>
-<p>Per a que aparega, esta pàgina ha d’estar <strong>inclosa en una <code class="docutils literal notranslate"><span class="pre">toctree</span></code></strong> (encadenada des de l’índex) i el <code class="docutils literal notranslate"><span class="pre">:maxdepth:</span></code> ha de ser major que 0.<br />
-Si no, la barra quedarà buida encara que el tema estiga bé configurat.</p>
+<section id="per-que-no-veig-la-barra-lateral">
+<h2>🧭 Per què no veig la barra lateral?<a class="headerlink" href="#per-que-no-veig-la-barra-lateral" title="Enllaça amb aquesta capçalera">#</a></h2>
+<p>Perquè esta pàgina tinga “Navegació de la Secció”:</p>
+<ol class="arabic simple">
+<li><p>Ha d’estar inclosa en una <code class="docutils literal notranslate"><span class="pre">toctree</span></code> (p. ex., a <code class="docutils literal notranslate"><span class="pre">index.md</span></code>).</p></li>
+<li><p>El <code class="docutils literal notranslate"><span class="pre">:maxdepth:</span></code> ha de ser almenys 1 o 2.</p></li>
+<li><p>I no amagues <code class="docutils literal notranslate"><span class="pre">.sidebar-primary-items</span></code> amb CSS si no vols!</p></li>
+</ol>
 </section>
 </section>
 
@@ -540,11 +559,15 @@ Si no, la barra quedarà buida encara que el tema estiga bé configurat.</p>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exemples">Exemples</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#que-fa-l-script">Què fa l’script</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#us">Ús</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parametres">Paràmetres</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exemples">Exemples</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publicacio">Publicació</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accions-rapides">📂 Accions ràpides</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#descarrega-lscript-dins-del-projecte">Descarrega l’script dins del projecte</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nota-sobre-la-navegacio-de-la-seccio">Nota sobre la “Navegació de la Secció”</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#descarrega-local-de-lscript">Descarrega local de l’script</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#per-que-no-veig-la-barra-lateral">🧭 Per què no veig la barra lateral?</a></li>
 </ul>
   </nav></div>
 

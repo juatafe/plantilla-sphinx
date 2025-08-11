@@ -1,44 +1,65 @@
 # Duplicar la plantilla amb l'script
 
-Aquest script crea un nou repositori Sphinx a partir d’un origen (per defecte, la plantilla), ajusta títols/URLs, fixa el nom del PDF en el workflow i activa GitHub Pages.
+Este script automatitza la creació d’un nou repositori Sphinx:
+
+- clona l’origen (per defecte, la plantilla oficial),
+- reescriu títols i URL en `conf.py`,
+- ajusta el nom del PDF al workflow,
+- crea el repo a GitHub i activa GitHub Pages (`gh-pages`).
 
 ```{admonition} Requisits per als botons
-Per als botons “Clona la plantilla a GitHub”, “Descarrega l’script” i “Descarrega el PDF” cal tindre l’extensió **sphinx_design** habilitada a `conf.py`:
+Per a que funcionen els botons “Clona la plantilla”, “Descarrega l’script” i “Descarrega el PDF”, has de tindre activada l’extensió `sphinx_design` a `conf.py`:
 
-```python
-extensions = [
-    "myst_parser",
-    "sphinx_design",
-]
+    extensions = [
+        "myst_parser",
+        "sphinx_design",
+    ]
 ```
-```
+
+---
 
 ## Ús
-```bash
+
+```{code-block} bash
 ./scripts/nou_sphinx_repo.sh NOU_REPO "Títol nou" UsuariGitHub [ORIGEN] [NomPDF.pdf]
 ```
 
-**Paràmetres**
-- `NOU_REPO`: nom del repo nou que es crearà a GitHub.
-- `"Títol nou"`: títol que es posarà al projecte Sphinx.
-- `UsuariGitHub`: el teu usuari (o organització) de GitHub.
-- `[ORIGEN]` *(opcional)*: repo origen a clonar. Si no el poses, usa la plantilla.
-- `[NomPDF.pdf]` *(opcional)*: nom fix del PDF que es publicarà.
+### Paràmetres
+- `NOU_REPO`: nom curt del nou repositori GitHub.
+- `"Títol nou"`: títol que apareixerà al lloc web generat.
+- `UsuariGitHub`: nom d’usuari o organització on es crearà el repo.
+- `[ORIGEN]` *(opcional)*: URL del repo base (per defecte, la plantilla).
+- `[NomPDF.pdf]` *(opcional)*: nom fix per al PDF generat.
+
+---
 
 ### Exemples
-```bash
-# Usant la plantilla per defecte
+
+```{code-block} bash
+# Clonar la plantilla bàsica
 ./scripts/nou_sphinx_repo.sh plantilla-sphinx "Repo de plantilla sphinx" juatafe
 
-# Indicant un origen i un nom de PDF personalitzat
+# Clonar un repositori diferent i fixar nom del PDF
 ./scripts/nou_sphinx_repo.sh apunts-xarxes "Apunts de Xarxes" juatafe https://github.com/juatafe/sge.git ApuntsDeXarxes.pdf
 ```
 
-## Què fa l'script
-- clona l’origen,
-- reescriu títols i URLs en `conf.py`,
-- ajusta el workflow perquè el PDF tinga **nom fix**,
-- crea el repo a GitHub i activa **Pages** damunt de `gh-pages`.
+---
+
+## Publicació
+
+Una vegada creat el repo, només cal afegir canvis i pujar-los:
+
+```{code-block} bash
+git add .
+git commit -m "Primera personalització"
+git push origin main
+```
+
+GitHub compilarà automàticament **HTML + PDF** i publicarà el lloc a:
+
+```
+https://<usuari>.github.io/<repo>
+```
 
 ---
 
@@ -67,20 +88,24 @@ Descarrega el PDF generat
 
 ---
 
-## Descarrega l’script dins del projecte
+## Descarrega local de l’script
 
-**Opció interna recomanada** (si el fitxer està en `docs/scripts/`):
+Si tens l’script dins del projecte (`docs/scripts/`), pots afegir:
 
 ```{download}`Descarrega l’script nou_sphinx_repo.sh <scripts/nou_sphinx_repo.sh>`
 ```
 
 ```{note}
-El rol `{download}` només funciona si el fitxer està dins de la carpeta *source* del teu projecte Sphinx.  
-Si el tens fora, usa l’enllaç “Descarrega l’script” de dalt.
+El rol `{download}` només funciona si el fitxer està dins de la carpeta *source* (`docs/`).  
+Si el tens fora, usa el botó de dalt.
 ```
 
 ---
 
-## Nota sobre la “Navegació de la Secció”
-Per a que aparega, esta pàgina ha d’estar **inclosa en una `toctree`** (encadenada des de l’índex) i el `:maxdepth:` ha de ser major que 0.  
-Si no, la barra quedarà buida encara que el tema estiga bé configurat.
+## 🧭 Per què no veig la barra lateral?
+
+Perquè esta pàgina tinga “Navegació de la Secció”:
+
+1. Ha d’estar inclosa en una `toctree` (p. ex., a `index.md`).
+2. El `:maxdepth:` ha de ser almenys 1 o 2.
+3. I no amagues `.sidebar-primary-items` amb CSS si no vols!
