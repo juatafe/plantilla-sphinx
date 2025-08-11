@@ -1,82 +1,68 @@
-/* ===== Paleta (adaptada) ===== */
+/* ===== Paleta de colors ===== */
 :root {
-  /* No calen variables de MKDocs ací, però pots definir-ne per ús propi */
   --brand-primary: #660099;  /* Morat */
   --brand-accent:  #F39200;  /* Taronja */
 }
 
-/* ===== HEADER (PyData) ===== */
+/* ===== HEADER ===== */
 
-/* Barra superior */
+/* Barra superior blanca i sense ombra excessiva */
 .bd-header .navbar {
-  background-color: #fff;              /* com posaves header blanc */
-  color: var(--brand-primary);
-  min-height: 10vh;                    /* semblant al que tenies */
+  background-color: #fff;
+  border-bottom: 1px solid #eee;
+  padding: 6px 16px;
+  display: flex;
+  align-items: center; /* Centra verticalment */
+  justify-content: space-between;
+  min-height: 10vh;
 }
 
 /* Contenidor interior */
-.bd-header .navbar .container-xl,
+.bd-header .navbar .container,
 .bd-header .navbar .container-lg,
-.bd-header .navbar .container {
+.bd-header .navbar .container-xl {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-left: 1vw;
-  padding-right: 1vw;
+  gap: 1rem;
 }
 
-/* Logo del site (si vols amagar l'img per usar els teus) */
-.navbar-brand img {
-  display: none;  /* així només es veuen els teus dos logos */
-}
+/* Amagar el logo per defecte del tema (opcional) */
+.navbar-brand img { display: none; }
 
-/* Bloc amb els teus dos logos (del component navbar-extra.html) */
+/* ===== Bloc de logos extra ===== */
 .jb-navbar-logos {
   display: flex;
-  align-items: center;
-  gap: 1vw;
-  position: relative;
+  align-items: center; /* Centra verticalment amb el menú */
+  gap: 12px;
+  margin-left: 12px;
 }
 
-/* Primer logo (Just) */
-.jb-navbar-logos .jb-logo-just {
-  display: inline-block;
-  width: 7vw;
-  height: 8vh;
-  background-image: url("../../assets/img/logos/logoJust.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
+/* Imatges sense gap per línia base i amb mides coherents */
+.jb-navbar-logos img {
+  display: block;
+  width: auto;
+  object-fit: contain;
 }
 
-/* Tercer logo (GvaNext) */
-.jb-navbar-logos .jb-logo-gvanext {
-  display: inline-block;
-  width: 15vw;
-  height: 5vh;
-  background-image: url("../../assets/img/logos/GvaNext.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
+/* Mida de cada logo */
+.jb-navbar-logos .logo-just {
+  height: 48px;
+}
+.jb-navbar-logos .logo-gvanext {
+  height: 40px;
+  margin-top: 2px;
 }
 
-/* ===== FONS DE PÀGINA ===== */
-body {
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.7)),
-    url("../../assets/img/fondo.png");
-  background-size: cover;
-  background-position: center bottom;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+/* Amagar el segon logo en mòbil */
+@media (max-width: 992px) {
+  .jb-navbar-logos .logo-gvanext { display: none; }
 }
 
-/* ===== FOOTER BASE (PyData) ===== */
+/* ===== FOOTER ===== */
 .bd-footer {
-  background: #fff;  /* base blanca com posaves */
+  background: #fff;
 }
-
-/* El nostre footer personalitzat */
 .custom-footer {
   display: flex;
   align-items: center;
@@ -90,12 +76,10 @@ body {
   min-height: 10vh;
   border-top: 2px solid #ddd;
 }
-
 .footer-logo img {
   max-height: 40px;
   height: 40px;
 }
-
 .footer-text {
   text-align: center;
   font-size: 0.9rem;
@@ -104,124 +88,8 @@ body {
 }
 
 /* ===== Detallets visuals ===== */
-/* Franja sota el H1 com tenies a extra.css */
+/* Franja sota H1 */
 .bd-content h1 {
   border-bottom: 2px solid var(--brand-primary);
   padding-bottom: .2rem;
-}
-
-
-/* ===== Navbar neta i centrada verticalment ===== */
-.bd-header .navbar {
-  background: #fff;
-  border-bottom: 1px solid #eee;
-  padding: .5rem 1rem;
-  display: flex;
-  align-items: center;             /* centra verticalment logos + menú */
-  justify-content: space-between;
-}
-
-.bd-header .navbar .container,
-.bd-header .navbar .container-lg,
-.bd-header .navbar .container-xl {
-  display: flex;
-  align-items: center;             /* centra verticalment logos + menú */
-  justify-content: space-between;
-  gap: 1rem;
-}
-
-/* Oculta el logo d'origen del tema (si no el vols) */
-.navbar-brand img { display: none; }
-
-/* ===== Bloc de logos a l'esquerra ===== */
-.jb-navbar-logos {
-  display: flex;
-  align-items: center;             /* alineat amb el menú */
-  gap: 1rem;
-  margin-right: .5rem;             /* un pel d'aire abans del menú */
-}
-
-/* Mides “bones”: més altets però sense desbordar */
-.jb-navbar-logos .logo-just {
-  height: 60px;                    /* puja o baixa al gust */
-  width: auto;
-}
-
-.jb-navbar-logos .logo-gvanext {
-  height: 45px;                    /* lleugerament més menut */
-  width: auto;
-}
-
-/* En mòbil, deixem només el primer perquè no es menge la barra */
-@media (max-width: 992px) {
-  .jb-navbar-logos .logo-gvanext { display: none; }
-}
-
-/* El menú també centrat verticalment */
-.bd-header .navbar-nav {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-
-/* Ajustar posició del bloc de logos */
-.jb-navbar-logos {
-  display: flex;
-  align-items: flex-start;   /* pugen un poc */
-  gap: 1rem;
-  margin-left: 2rem;         /* més a la dreta */
-  margin-top: -5px;          /* pujar lleugerament */
-}
-
-/* Ajustar cada logo si cal */
-.jb-navbar-logos .jb-logo-just {
-  width: 7vw;
-  height: 8vh;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-.jb-navbar-logos .jb-logo-gvanext {
-  width: 15vw;
-  height: 5vh;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-/* === HEADER: posició i alineació dels logos (classe correcta) === */
-.bd-header .navbar .jb-header-logos {
-  display: flex;
-  align-items: center;        /* alineats amb el menú */
-  gap: 1rem;
-  margin-left: 2rem;          /* més cap a la dreta */
-  transform: translateY(-2px);/* un pèl més amunt */
-}
-
-/* Logo IES Jaume II */
-.bd-header .navbar .jb-header-logos .jb-logo-just {
-  display: inline-block;
-  width: 7vw;
-  height: 8vh;
-  background-image: url("../../assets/img/logos/logoJust.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-/* Logo GVA Next */
-.bd-header .navbar .jb-header-logos .jb-logo-gvanext {
-  display: inline-block;
-  width: 15vw;
-  height: 5vh;
-  background-image: url("../../assets/img/logos/GvaNext.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-/* En mòbil, amaguem el segon perquè no ocupe massa */
-@media (max-width: 992px) {
-  .bd-header .navbar .jb-header-logos .jb-logo-gvanext { display: none; }
 }
