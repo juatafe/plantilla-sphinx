@@ -21,6 +21,15 @@ Com usar `scripts/nou_sphinx_repo.sh` per a clonar i personalitzar.
 :::
 ```
 
+```{toctree}
+:hidden:
+:maxdepth: 2
+
+guia-rapida
+personalitzacio
+duplicar-plantilla
+```
+
 ## Estat del projecte
 - Tema: **pydata-sphinx-theme**
 - PDF: es publica en `pdf/<slug>.pdf` i apareix com a icona a la barra superior.

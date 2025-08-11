@@ -17,6 +17,7 @@ RUN python -m pip install --upgrade pip setuptools wheel && \
       sphinx \
       pydata-sphinx-theme \
       myst-parser \
-      sphinx-copybutton
+      sphinx-copybutton \
+      sphinx-design
 
 WORKDIR /work
