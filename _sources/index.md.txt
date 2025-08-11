@@ -1,6 +1,6 @@
 # Plantilla Sphinx (HTML + PDF)
 
-Benvinguda! Esta és la portada de la plantilla. A sota tens una vista ràpida i enllaços útils.
+Benvinguda! Esta és la portada de la plantilla. Baix tens una vista ràpida i enllaços útils.
 
 ```{grid} 1 1 2 2
 :gutter: 2
