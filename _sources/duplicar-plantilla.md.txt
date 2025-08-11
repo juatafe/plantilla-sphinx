@@ -2,25 +2,25 @@
 
 Este script automatitza la creació d’un nou repositori Sphinx:
 
-- clona l’origen (per defecte, la plantilla oficial),
-- reescriu títols i URL en `conf.py`,
-- ajusta el nom del PDF al workflow,
-- crea el repo a GitHub i activa GitHub Pages (`gh-pages`).
+- Clona l’origen (per defecte, la plantilla oficial),
+- Reescriu títols i URL en `conf.py`,
+- Ajusta el nom del PDF al workflow,
+- Crea el repo a GitHub i activa GitHub Pages (`gh-pages`).
 
-```{admonition} Requisits per als botons
+<!-- ```{admonition} Requisits per als botons
 Per a que funcionen els botons “Clona la plantilla”, “Descarrega l’script” i “Descarrega el PDF”, has de tindre activada l’extensió `sphinx_design` a `conf.py`:
 
     extensions = [
         "myst_parser",
         "sphinx_design",
     ]
-```
+``` -->
 
 ---
 
 ## Ús
-
-```{code-block} bash
+Per a duplicar la plantilla, executa el següent comandament des de la carpeta del projecte:
+``` bash
 ./scripts/nou_sphinx_repo.sh NOU_REPO "Títol nou" UsuariGitHub [ORIGEN] [NomPDF.pdf]
 ```
 
@@ -35,7 +35,7 @@ Per a que funcionen els botons “Clona la plantilla”, “Descarrega l’scrip
 
 ### Exemples
 
-```{code-block} bash
+``` bash
 # Clonar la plantilla bàsica
 ./scripts/nou_sphinx_repo.sh plantilla-sphinx "Repo de plantilla sphinx" juatafe
 
@@ -49,7 +49,7 @@ Per a que funcionen els botons “Clona la plantilla”, “Descarrega l’scrip
 
 Una vegada creat el repo, només cal afegir canvis i pujar-los:
 
-```{code-block} bash
+``` bash
 git add .
 git commit -m "Primera personalització"
 git push origin main
