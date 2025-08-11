@@ -93,3 +93,13 @@
   border-bottom: 2px solid var(--brand-primary);
   padding-bottom: .2rem;
 }
+
+body {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.7)),
+    url("../../assets/img/fondo.png");
+  background-size: cover;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
