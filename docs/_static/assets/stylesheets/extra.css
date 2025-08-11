@@ -254,3 +254,47 @@ padding: 0.25rem 0;
     display: none;
   }
 }
+
+
+/* ——— Alinear i centrar tot el capçal ——— */
+.bd-header .navbar .bd-header__inner {
+  display: flex;
+  align-items: center; /* centra verticalment tot */
+}
+
+/* La columna esquerra (logo del tema + teus logos) en flex */
+.bd-header .navbar .navbar-header-items__start {
+  display: flex;
+  align-items: center; /* mateix eix vertical */
+  gap: 12px;
+}
+
+/* Ajust del logo del tema perquè no “baixe” la línia */
+.bd-header .navbar .navbar-brand .logo__image {
+  height: 48px; /* prova 44–52px si vols afinar */
+  width: auto;
+  display: block; /* elimina espai de línia */
+}
+
+/* El teu bloc de logos */
+.bd-header .navbar .jb-navbar-logos {
+  display: flex;
+  align-items: center; /* aliniats amb el menú */
+  gap: 12px;
+  margin-left: 12px; /* un pèl cap a la dreta */
+}
+
+/* Imatges: sense “baseline gap” i mides coherents */
+.bd-header .navbar .jb-navbar-logos img {
+  display: block; /* evita que “ballen” per la línia base */
+  width: auto;
+}
+
+/* Alçada recomanada de cada logo (ajusta al gust) */
+.bd-header .navbar .jb-navbar-logos .logo-just { height: 52px; }
+.bd-header .navbar .jb-navbar-logos .logo-gvanext{ height: 40px; margin-top: 2px; }
+
+/* En mòbil, amaga el segon si cal espai */
+@media (max-width: 992px) {
+.bd-header .navbar .jb-navbar-logos .logo-gvanext { display: none; }
+}
