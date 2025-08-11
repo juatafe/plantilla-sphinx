@@ -1,0 +1,77 @@
+name: Build & Deploy Sphinx (HTML + PDF)
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+  packages: read     # <- per poder llegir (pull) la imatge de GHCR
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/${{ github.repository_owner }}/sphinx-latex:latest
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # (Opcional) deps extra via requirements.txt
+      - name: Install extra Python deps
+        run: |
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          if [ -f docs/requirements.txt ]; then pip install -r docs/requirements.txt; fi
+
+      - name: Build HTML
+        run: sphinx-build -b html docs docs/_build/html
+
+      - name: Build PDF (latexpdf)
+        run: |
+          sphinx-build -M latexpdf docs docs/_build
+          echo "PDFs generats en docs/_build/latex:"
+          ls -l docs/_build/latex/*.pdf || true
+
+      # Copiem el PDF a l’HTML perquè el botó de la navbar apunte a /pdf/plantilla-sphinx.pdf
+      - name: Copy PDF into HTML site with fixed name
+        run: |
+          mkdir -p docs/_build/html/pdf
+          # Agafa el primer PDF generat i renomena'l a plantilla-sphinx.pdf
+          first_pdf="$(ls -1 docs/_build/latex/*.pdf | head -n1)"
+          cp "$first_pdf" docs/_build/html/pdf/plantilla-sphinx.pdf
+          ls -l docs/_build/html/pdf/
+
+      - name: Upload HTML artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-html
+          path: docs/_build/html
+
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-pdf
+          path: docs/_build/latex/*.pdf
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs/_build/html
+
+      - name: Deploy to Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
