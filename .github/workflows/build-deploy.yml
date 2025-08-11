@@ -3,32 +3,91 @@ name: Build & Deploy Sphinx (HTML + PDF)
 on:
   push:
     branches: [ main ]
-  workflow_dispatch:
+  workflow_dispatch: {}
 
 permissions:
   contents: read
   pages: write
   id-token: write
-  packages: read     # <- per poder llegir (pull) la imatge de GHCR
+  packages: write  # per pujar imatge si cal
 
 concurrency:
   group: "pages"
   cancel-in-progress: true
 
 jobs:
+  check-image:
+    runs-on: ubuntu-latest
+    outputs:
+      has_image: ${{ steps.out.outputs.has_image }}
+      dockerfile_changed: ${{ steps.diff.outputs.dockerfile_changed }}
+      needs_build: ${{ steps.compute.outputs.needs_build }}
+      image_ref: ${{ steps.meta.outputs.image }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - id: meta
+        run: echo "image=ghcr.io/${GITHUB_REPOSITORY_OWNER,,}/sphinx-latex:latest" >> "$GITHUB_OUTPUT"
+
+      - name: Check if image exists on GHCR
+        id: out
+        run: |
+          if docker manifest inspect ghcr.io/${GITHUB_REPOSITORY_OWNER,,}/sphinx-latex:latest > /dev/null 2>&1; then
+            echo "has_image=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "has_image=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Detect Dockerfile change
+        id: diff
+        uses: dorny/paths-filter@v3
+        with:
+          filters: |
+            dockerfile:
+              - '.ci/Dockerfile'
+
+      - name: Compute need to build
+        id: compute
+        run: |
+          NEEDS_BUILD=false
+          if [ "${{ steps.out.outputs.has_image }}" != "true" ]; then NEEDS_BUILD=true; fi
+          if [ "${{ steps.diff.outputs.dockerfile }}" = "true" ]; then NEEDS_BUILD=true; fi
+          echo "needs_build=$NEEDS_BUILD" >> "$GITHUB_OUTPUT"
+
+  build-container:
+    needs: check-image
+    if: needs.check-image.outputs.needs_build == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Log in to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: .ci/Dockerfile
+          push: true
+          tags: ghcr.io/${{ github.repository_owner }}/sphinx-latex:latest
+
   build-deploy:
+    needs: [check-image, build-container]
     runs-on: ubuntu-latest
     container:
       image: ghcr.io/${{ github.repository_owner }}/sphinx-latex:latest
       credentials:
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
-
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      # (Opcional) deps extra via requirements.txt
+      # (Opcional) instala deps extra de Python si tens requirements
       - name: Install extra Python deps
         run: |
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
@@ -40,17 +99,13 @@ jobs:
       - name: Build PDF (latexpdf)
         run: |
           sphinx-build -M latexpdf docs docs/_build
-          echo "PDFs generats en docs/_build/latex:"
           ls -l docs/_build/latex/*.pdf || true
 
-      # Copiem el PDF a l’HTML perquè el botó de la navbar apunte a /pdf/plantilla-sphinx.pdf
-      - name: Copy PDF into HTML site with fixed name
+      - name: Copy PDF into HTML site (fixed name)
         run: |
           mkdir -p docs/_build/html/pdf
-          # Agafa el primer PDF generat i renomena'l a plantilla-sphinx.pdf
           first_pdf="$(ls -1 docs/_build/latex/*.pdf | head -n1)"
           cp "$first_pdf" docs/_build/html/pdf/plantilla-sphinx.pdf
-          ls -l docs/_build/html/pdf/
 
       - name: Upload HTML artifact
         uses: actions/upload-artifact@v4
