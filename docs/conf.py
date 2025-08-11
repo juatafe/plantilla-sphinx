@@ -77,19 +77,26 @@ html_search_language = "es"
 latex_engine = "xelatex"
 
 latex_elements = {
-    # Fonts
     "fontpkg": r"""
 \usepackage{fontspec}
-\setmainfont{TeX Gyre Pagella}
-\setsansfont{TeX Gyre Heros}
-\setmonofont{TeX Gyre Cursor}
+\IfFontExistsTF{TeX Gyre Pagella}{
+  \setmainfont{TeX Gyre Pagella}
+}{
+  \setmainfont{Latin Modern Roman}
+}
+\IfFontExistsTF{TeX Gyre Heros}{
+  \setsansfont{TeX Gyre Heros}
+}{
+  \setsansfont{Latin Modern Sans}
+}
+\setmonofont{Latin Modern Mono}
 """,
-    # Llengua i hifenació
     "preamble": r"""
 \usepackage{polyglossia}
 \setmainlanguage{catalan}
 """
 }
+
 
 # Plantilles personalitzades (si cal)
 # templates_path = ["_templates"]
