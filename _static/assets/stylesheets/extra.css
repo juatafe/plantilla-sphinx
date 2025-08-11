@@ -298,3 +298,46 @@ padding: 0.25rem 0;
 @media (max-width: 992px) {
 .bd-header .navbar .jb-navbar-logos .logo-gvanext { display: none; }
 }
+
+/* ——— Header compacte i tot centrat verticalment ——— */
+.bd-header .navbar {
+  padding: 6px 16px;
+}
+.bd-header .navbar .bd-header__inner {
+  display: flex;
+  align-items: center; /* centra verticalment tot */
+}
+.bd-header .navbar .navbar-header-items__start {
+  display: flex;
+  align-items: center; /* logo del tema + els teus logos alineats */
+  gap: 12px;
+}
+
+/* Logo del tema (esquerra) */
+.bd-header .navbar .navbar-brand .logo__image {
+  height: 48px; /* prova 44–52px si vols afinar */
+  width: auto;
+  display: block; /* elimina espai de línia */
+}
+
+/* El teu bloc de logos */
+.bd-header .navbar .jb-navbar-logos {
+  display: flex;
+  align-items: center; /* aliniats amb el menú */
+  gap: 12px;
+  margin-left: 12px; /* un pèl cap a la dreta */
+}
+.bd-header .navbar .jb-navbar-logos img {
+  display: block; /* evita “ball” per la línia base */
+  width: auto;
+  object-fit: contain;
+}
+
+/* Alçades coherents (afina-les al gust) */
+.bd-header .navbar .jb-navbar-logos .logo-just { height: 48px; }
+.bd-header .navbar .jb-navbar-logos .logo-gvanext { height: 40px; margin-top: 2px; }
+
+/* En mòbil, amaga el segon si cal espai */
+@media (max-width: 992px) {
+  .bd-header .navbar .jb-navbar-logos .logo-gvanext { display: none; }
+}
