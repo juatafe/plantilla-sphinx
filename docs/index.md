@@ -22,7 +22,8 @@ Com usar `scripts/nou_sphinx_repo.sh` per a clonar i personalitzar.
 ```
 
 ```{toctree}
-:maxdepth: 2
+:hidden:
+:maxdepth: 0
 
 guia-rapida
 personalitzacio
