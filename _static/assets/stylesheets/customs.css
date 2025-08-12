@@ -103,3 +103,6 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
+.jb-header-logos img {
+  margin-left: 10px;
+}
