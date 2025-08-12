@@ -55,7 +55,7 @@ html_theme_options = {
     "show_nav_level": 1, # quant nivell d’arbre es desplega d’entrada
     "navigation_depth": 2, # profunditat del TOC
     "collapse_navigation": False,
-    "secondary_sidebar_items": ["page-toc", "sourcelink", "edit-this-page"],
+    "secondary_sidebar_items": [ "sourcelink", "edit-this-page"],
     "use_edit_page_button": True,
     "show_prev_next": True,
     "show_toc_level": 2,
