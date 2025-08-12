@@ -1,6 +1,6 @@
-# Guia ràpida
+## Guia ràpida
 
-## 1) Desenvolupament en local(no és necessari)
+### 1) Desenvolupament en local(no és necessari)
 No és necessari treballar en local: la plantilla ja està preparada perquè GitHub compile la documentació i la publique automàticament quan faces push a main.
 Si vols treballar i previsualitzar en local abans de publicar, segueix les instruccions indicades:
 
@@ -21,7 +21,7 @@ xdg-open _build/html/index.html        # Linux
 # start _build/html/index.html         # Windows (PowerShell)
 ```
 
-## 2) Estructura
+### 2) Estructura
 ```
 docs/
   ├─ index.md
@@ -33,11 +33,20 @@ docs/
   └─ conf.py
 ```
 
-## 3) Publicació
+### 3) Publicació
 Només cal fer *push* a `main`. El workflow compila **HTML** i **PDF** i els puja a `gh-pages`.
 Abans, guarda i envia els canvis amb:
 ```
 git add .
 git commit -m "Actualització de contingut"
 git push
+```
+
+
+
+```{toctree}
+:hidden:
+:maxdepth: 2
+
+
 ```
