@@ -110,8 +110,9 @@ Perquè esta pàgina tinga “Navegació de la Secció”:
 2. El `:maxdepth:` ha de ser almenys 1 o 2.
 3. I no amagues `.sidebar-primary-items` amb CSS si no vols! -->
 
-
+```{toctree}
 :maxdepth: 1
 
 script-explicat
 exemple-pas-a-pas
+```
