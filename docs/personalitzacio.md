@@ -106,3 +106,12 @@ pdf_url = f"pdf/{site_slug}.pdf"
 ```
 
 Això assegura que el fitxer `.pdf` tinga un nom coherent amb el repo (ideal per a repositoris educatius).
+
+
+
+```{toctree}
+:hidden:
+:maxdepth: 2
+
+
+```

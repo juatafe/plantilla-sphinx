@@ -3,4 +3,5 @@ pydata-sphinx-theme
 myst-parser
 sphinx-copybutton
 sphinx-design
-sphinx-design
+sphinx_rtd_theme
+furo
