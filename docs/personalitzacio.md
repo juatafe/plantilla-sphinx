@@ -3,9 +3,7 @@
 El fitxer `conf.py` és el cor del projecte Sphinx. Ací pots configurar el tema, els estils, els logos, les opcions de navegació, i la generació del PDF.
 
 ---
-```{toctree}
-:maxdepth: 2
-```
+
 ## Tema i opcions visuals
 
 El tema utilitzat és **PyData Sphinx Theme**, un tema modern i molt configurable:
