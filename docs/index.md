@@ -2,24 +2,32 @@
 
 Benvinguda! Esta és la portada de la plantilla. Baix tens una vista ràpida i enllaços útils.
 
-```{grid} 1 1 2 2
+{grid} 1 1 2 2
 :gutter: 2
 
-:::{card} Guia ràpida
+:::grid-item
+:::card{Guia ràpida}
 :link: guia-rapida
 **Comandes** i flux bàsic per a treballar en local i publicar.
 :::
+:::
 
-:::{card} Personalització
+:::grid-item
+:::card{Personalització}
 :link: personalitzacio
 Canvia tema, logo, CSS i opcions del `conf.py`.
 :::
+:::
 
-:::{card} Duplicar amb un script
+:::grid-item
+:::card{Duplicar amb un script}
 :link: duplicar-plantilla
 Com usar `scripts/nou_sphinx_repo.sh` per a clonar i personalitzar.
 :::
-```
+:::
+
+{/grid}
+
 
 ```{toctree}
 :hidden:
