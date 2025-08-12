@@ -48,6 +48,7 @@ pip install -r requirements.txt  # opcional si no uses el contenidor
 sphinx-build -b html docs docs/_build/html
 ```
 
+
 ---
 
 ## 🚦 Publicació automàtica
