@@ -205,13 +205,13 @@
   box-shadow: none !important;
   border: 0 !important;
 }
-.bd-sidebar-primary .sidebar-title { display: none; }
+/* .bd-sidebar-primary .sidebar-title { display: none; }
 .bd-sidebar-primary .sidebar-primary-items:has(nav ul li) { display: block; }
 .bd-sidebar-primary .sidebar-primary-items:not(:has(nav ul li)) { display: none; }
 .bd-sidebar-primary nav ul {
   margin: 0;
   padding: 0.25rem 0;
-}
+} */
 
 /* Ajust real sobre la classe existent per als logos */
 .bd-header .navbar .jb-navbar-logos {
@@ -307,7 +307,7 @@
 /* Amaga el contenidor si no té enllaços */
 /* .bd-sidebar-primary .sidebar-primary-items:not(:has(nav ul li)) { display: none; } */
 /* Mostra sempre el contenidor; el tema ja gestiona l’estat buit */
-.bd-sidebar-primary .sidebar-primary-items { display: block; }
+/* .bd-sidebar-primary .sidebar-primary-items { display: block; } */
 
 /* ======= Laterals en blanc només en mòbil ======= */
 @media (max-width: 992px) {
