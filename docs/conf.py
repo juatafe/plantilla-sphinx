@@ -21,7 +21,7 @@ myst_heading_anchors = 3
 
 # ──────────────── HTML (triar tema ací) ────────────────
 # Pots triar via variable d'entorn: SPHINX_THEME=pydata_sphinx_theme make html
-html_theme = os.environ.get("SPHINX_THEME", "pydata_sphinx_theme")  # "furo" | "sphinx_rtd_theme" | "pydata_sphinx_theme" | "alabaster"
+html_theme = os.environ.get("SPHINX_THEME", "sphinx_book_theme")  # "furo" | "sphinx_rtd_theme" | "pydata_sphinx_theme" | "alabaster"
 html_title = "Repo de plantilla sphinx"
 html_static_path = ["_static"]
 
@@ -48,6 +48,15 @@ site_slug = _repo_name or slugify(project)
 pdf_url = f"pdf/{site_slug}.pdf"
 
 # ──────────────── Opcions per tema (cada tema entén les seues) ────────────────
+_book_opts = {
+    "logo_only": False,  # mostra nom i logo
+    "repository_url": "https://github.com/juatafe/plantilla-sphinx",
+    "use_repository_button": True,
+    "use_issues_button": True,
+    "use_download_button": True,
+}
+
+
 _pydata_opts = {
     "show_nav_level": 2,
     "navigation_depth": 4,
@@ -101,6 +110,8 @@ elif html_theme == "furo":
     html_theme_options = _furo_opts
 elif html_theme == "alabaster":
     html_theme_options = _alabaster_opts
+elif html_theme == "sphinx_book_theme":
+    html_theme_options = _book_opts
 else:
     html_theme_options = {}
 

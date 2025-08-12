@@ -111,11 +111,11 @@ Perquè esta pàgina tinga “Navegació de la Secció”:
 3. I no amagues `.sidebar-primary-items` amb CSS si no vols! -->
 
 
-
+<!-- 
 
 ```{toctree}
 :hidden:
 :maxdepth: 2
 
 
-```
+``` -->

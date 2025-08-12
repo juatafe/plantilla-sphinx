@@ -5,3 +5,4 @@ sphinx-copybutton
 sphinx-design
 sphinx_rtd_theme
 furo
+sphinx_book_theme

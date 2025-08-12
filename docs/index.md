@@ -34,5 +34,7 @@ Com usar `scripts/nou_sphinx_repo.sh` per a clonar i personalitzar.
 :hidden:
 :maxdepth: 2
 
-
+guia-rapida
+personalitzacio
+duplicar-plantilla
 ```

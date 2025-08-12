@@ -42,11 +42,11 @@ git commit -m "Actualització de contingut"
 git push
 ```
 
-
+<!-- 
 
 ```{toctree}
 :hidden:
 :maxdepth: 2
 
 
-```
+``` -->
