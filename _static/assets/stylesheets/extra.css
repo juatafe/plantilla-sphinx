@@ -344,3 +344,32 @@
 .bd-sidebar .nav li.active > ul {
     display: block;
 }
+
+
+/* ——— Mantindre la “Navegació de la Secció” sempre a l’esquerra, també en mòbil ——— */
+@media (max-width: 992px) {
+  /* Mostra i fixa el lateral esquerre */
+  .bd-sidebar-primary {
+    position: sticky;
+    top: var(--pst-header-height, 3.25rem);
+    transform: none !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    background-color: #fff; /* opcional, per a contrast */
+    width: var(--pst-sidebar-primary-width, 18rem);
+    max-width: var(--pst-sidebar-primary-width, 18rem);
+    z-index: 1; /* davall de la navbar */
+  }
+
+  /* Evita l’efecte “offcanvas” del tema */
+  .bd-sidebar-primary__overlay { display: none !important; }
+  .bd-sidebar-primary .sidebar-toggle,
+  .bd-header .navbar .sidebar-toggle {
+    display: none !important; /* amaga el botó d’obrir/tancar menú */
+  }
+
+  /* Ajusta el contenidor perquè no “s’òbriga” damunt del contingut */
+  .bd-main .bd-content {
+    padding-left: 0.5rem;
+  }
+}
