@@ -52,8 +52,8 @@ pdf_url = f"pdf/{site_slug}.pdf"
 
 # Opcions del tema
 html_theme_options = {
-    "show_nav_level": 4, # quant nivell d’arbre es desplega d’entrada
-    "navigation_depth": 4, # profunditat del TOC
+    "show_nav_level": 1, # quant nivell d’arbre es desplega d’entrada
+    "navigation_depth": 2, # profunditat del TOC
     "collapse_navigation": False,
     "secondary_sidebar_items": ["page-toc", "sourcelink", "edit-this-page"],
     "use_edit_page_button": True,

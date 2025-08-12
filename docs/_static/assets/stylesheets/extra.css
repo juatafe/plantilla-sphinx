@@ -335,3 +335,12 @@
     border: 0 !important;
   }
 }
+/* Força la visibilitat de tots els nivells de navegació */
+.bd-sidebar .nav ul {
+    display: block !important;
+}
+
+/* Expandeix els elements actius */
+.bd-sidebar .nav li.active > ul {
+    display: block;
+}
