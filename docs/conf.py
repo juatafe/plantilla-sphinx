@@ -23,8 +23,8 @@ myst_heading_anchors = 3
 # Pots triar via variable d'entorn: SPHINX_THEME=pydata_sphinx_theme make html
 html_theme = os.environ.get("SPHINX_THEME", "sphinx_book_theme")  # "furo" | "sphinx_rtd_theme" | "pydata_sphinx_theme" | "alabaster"
 html_title = "Repo de plantilla sphinx"
-html_static_path = ["_static"]
 
+templates_path = ["_templates"]
 # Logos i favicon (com ja tenies)
 html_logo = "_static/assets/img/logos/logoJust.png"
 html_favicon = "_static/assets/img/logos/logo50.ico"
@@ -33,7 +33,7 @@ html_favicon = "_static/assets/img/logos/logo50.ico"
 html_css_files = [
     "assets/stylesheets/extracsspdf.css",
     "assets/stylesheets/customs.css",
-    #"assets/stylesheets/extra.css",
+    "assets/stylesheets/extra.css",
 ]
 
 def slugify(s: str) -> str:
@@ -54,7 +54,7 @@ _book_opts = {
     "use_repository_button": True,
     "use_issues_button": True,
     "use_download_button": True,
-    "navbar_start": ["navbar-logo", "jb-header-logos"],
+    "navbar_start": ["jb-header-logos"],
 }
 
 
@@ -152,4 +152,4 @@ latex_elements = {
 latex_documents = [("index", f"{site_slug}.tex", project, author, "manual")]
 
 # ──────────────── Plantilles personalitzades ────────────────
-templates_path = ["_templates"]
+

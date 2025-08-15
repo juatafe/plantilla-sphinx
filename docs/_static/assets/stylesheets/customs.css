@@ -1,105 +1,84 @@
-/* ===== Paleta de colors ===== */
-:root {
-  --brand-primary: #660099;  /* Morat */
-  --brand-accent:  #F39200;  /* Taronja */
+/* ===== Paleta ===== */
+:root { --brand-primary:#660099; --brand-accent:#F39200; }
+
+/* ===== NAVBAR ===== */
+.bd-header .navbar{
+  background:#fff; border-bottom:1px solid #eee;
+  padding:6px 16px; display:flex; align-items:center; justify-content:space-between;
+  min-height:64px;
 }
-
-/* ===== HEADER ===== */
-
-/* Barra superior blanca i sense ombra excessiva */
-.bd-header .navbar {
-  background-color: #fff;
-  border-bottom: 1px solid #eee;
-  padding: 6px 16px;
-  display: flex;
-  align-items: center; /* Centra verticalment */
-  justify-content: space-between;
-  min-height: 10vh;
-}
-
-/* Contenidor interior */
 .bd-header .navbar .container,
 .bd-header .navbar .container-lg,
-.bd-header .navbar .container-xl {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
+.bd-header .navbar .container-xl{
+  display:flex; align-items:center; justify-content:space-between; gap:1rem;
 }
 
-/* Amagar el logo per defecte del tema (opcional) */
-/* .navbar-brand img { display: none; } */
+/* Logo principal del lloc: NO l’amagues */
+.navbar-brand img{ display:block; height:48px; width:auto; }
 
-/* ===== Bloc de logos extra ===== */
-.jb-navbar-logos {
-  display: flex;
-  align-items: center; /* Centra verticalment amb el menú */
-  gap: 12px;
-  margin-left: 12px;
+/* ===== Bloc extra (inserit amb "navbar_start": ["jb-header-logos"]) ===== */
+.jb-navbar-logos{
+  display:flex; align-items:center; gap:12px; margin-left:12px; flex-wrap:nowrap;
 }
+.jb-navbar-logos img{ display:block; width:auto; object-fit:contain; }
+.jb-navbar-logos .logo-gvanext{ height:40px; }  /* GvaNext.png */
 
-/* Imatges sense gap per línia base i amb mides coherents */
-.jb-navbar-logos img {
-  display: block;
-  width: auto;
-  object-fit: contain;
-}
+/* ===== Barra lateral (2 trams) ===== */
 
-/* Mida de cada logo */
-.jb-navbar-logos .logo-just {
-  height: 48px;
-}
-.jb-navbar-logos .logo-gvanext {
-  height: 40px;
-  margin-top: 2px;
-}
-
-/* Amagar el segon logo en mòbil */
-@media (max-width: 992px) {
-  .jb-navbar-logos .logo-gvanext { display: none; }
+/* ≥992px → escriptori: sidebar transparent */
+@media (min-width: 992px){
+  .bd-sidebar-primary{
+    background: transparent !important;
+    box-shadow: none !important;
+    border: 0 !important;
+  }
+  .bd-sidebar-secondary{
+    background: transparent !important;
+    box-shadow: none !important;
+    border-left: 0 !important;
+  }
+  /* Assegura buscador visible en el lateral */
+  .bd-sidebar-primary .bd-search{ display:block !important; }
 }
 
-/* ===== FOOTER ===== */
-.bd-footer {
-  background: #fff;
+/* <992px → mòbil/tauleta: sidebar blanc i tancat per defecte */
+@media (max-width: 991.98px){
+  /* Fons blanc quan s’obri el menú */
+  .bd-sidebar-primary,
+  .bd-sidebar-secondary,
+  .bd-sidebar-secondary .bd-toc,
+  .bd-sidebar-secondary .sidebar-header,
+  .bd-sidebar-secondary .toc-title{
+    background:#fff !important;
+    box-shadow:none !important;
+    border:0 !important;
+  }
+
+  /* Oculta el primari per defecte (el book ja tanca el drawer; reforcem) */
+  .bd-sidebar-primary{
+    transform: translateX(-100%);
+    transition: transform .2s ease;
+  }
+  /* Quan el tema afegeix la classe “show” o l’overlay està actiu, mostra’l */
+  .bd-sidebar-primary.show,
+  .overlay.active + .bd-sidebar-primary{
+    transform: translateX(0);
+  }
 }
-.custom-footer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 2vw;
-  width: 100%;
-  background-color: white;
-  padding: 2vh 5vw;
-  color: black;
-  box-sizing: border-box;
-  min-height: 10vh;
-  border-top: 2px solid #ddd;
+/* Logos extra a la navbar (dos trams) */
+@media (min-width: 992px){
+  .jb-navbar-logos img{ height:40px; width:auto; object-fit:contain; }
 }
-.footer-logo img {
-  max-height: 40px;
-  height: 40px;
+@media (max-width: 991.98px){
+  .jb-navbar-logos img{ height:30px; width:auto; object-fit:contain; }
 }
-.footer-text {
-  text-align: center;
-  font-size: 0.9rem;
-  font-weight: 500;
-  max-width: 50%;
-}
+
 
 /* ===== Detallets visuals ===== */
-/* Franja sota H1 */
-.bd-content h1 {
-  border-bottom: 2px solid var(--brand-primary);
-  padding-bottom: .2rem;
-}
-
-body {
+.bd-content h1{ border-bottom:2px solid var(--brand-primary); padding-bottom:.2rem; }
+body{
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.7)),
+    linear-gradient(rgba(255,255,255,.1), rgba(255,255,255,.7)),
     url("../../assets/img/fondo.png");
-  background-size: cover;
-  background-position: center bottom;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-size:cover; background-position:center bottom; background-repeat:no-repeat; background-attachment:fixed;
 }
