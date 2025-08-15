@@ -1,0 +1,20 @@
+:root{ --jb-logo-h: 2.5rem; }               /* desktop */
+@media (max-width: 62rem){ :root{ --jb-logo-h: 1.875rem; } }  /* mòbil */
+
+html body header.bd-header .announcement .jb-navbar-logos img,
+html body header.bd-header .navbar .jb-navbar-logos img{
+  height: var(--jb-logo-h) !important;
+  max-height: var(--jb-logo-h) !important;
+  width: auto !important;
+  object-fit: contain;
+  display: block;
+}
+
+.only-mobile{ display:none !important; }
+@media (max-width: 62rem){
+  .only-mobile{ display:inline-block !important; }
+  .navbar-brand img{ display:none !important; } /* evita duplicat */
+}
+@media (min-width: 62rem){
+  .navbar-brand img{ display:block !important; }
+}

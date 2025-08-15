@@ -23,7 +23,7 @@ myst_heading_anchors = 3
 # Pots triar via variable d'entorn: SPHINX_THEME=pydata_sphinx_theme make html
 html_theme = os.environ.get("SPHINX_THEME", "sphinx_book_theme")  # "furo" | "sphinx_rtd_theme" | "pydata_sphinx_theme" | "alabaster"
 html_title = "Repo de plantilla sphinx"
-
+html_static_path = ["_static"]
 templates_path = ["_templates"]
 # Logos i favicon (com ja tenies)
 html_logo = "_static/assets/img/logos/logoJust.png"
