@@ -1,0 +1,136 @@
+/* ===== Variables (rem) ===== */
+:root{
+  --brand-primary:#660099;
+  --brand-accent:#F39200;
+
+  --space-xxs:.25rem;
+  --space-xs:.375rem;   /* 6px  */
+  --space-s:.75rem;     /* 12px */
+  --space-m:1rem;       /* 16px */
+
+  --nav-min-h:4rem;           /* 64px  */
+  --border-hair:.0625rem;     /* 1px   */
+
+  --logo-main-desktop:3rem;       /* 48px: logo navbar (centre)      */
+  --logo-extra-desktop:2.5rem;    /* 40px: GVA/Next en escriptori    */
+  --logo-extra-mobile:0.875rem;   /* 30px: logos dalt en mòbil       */
+
+  --footer-logo-desktop:2.5rem;   /* 40px: logos del footer          */
+  --footer-logo-mobile:2rem;      /* 32px: logos del footer en mòbil */
+}
+
+/* ===== NAVBAR ===== */
+.bd-header .navbar{
+  background:#fff;
+  border-bottom:var(--border-hair) solid #eee;
+  padding:var(--space-xs) var(--space-m);
+  display:flex; align-items:center; justify-content:space-between;
+  min-height:var(--nav-min-h);
+}
+.bd-header .navbar .container,
+.bd-header .navbar .container-lg,
+.bd-header .navbar .container-xl{
+  display:flex; align-items:center; justify-content:space-between; gap:var(--space-m);
+}
+
+/* Logo principal del lloc (en escriptori) */
+.navbar-brand img{ display:block; height:var(--logo-main-desktop); width:auto; }
+
+/* Franja d’avís (on posem GVA/Next al book) */
+.bd-header .announcement{ background:#fff; border-bottom:var(--border-hair) solid #eee; padding:var(--space-xxs) var(--space-m); }
+
+/* Bloc extra de logos dalt (val per .announcement i per .navbar) */
+.jb-navbar-logos{ display:flex; align-items:center; gap:var(--space-s); margin-left:var(--space-m); flex-wrap:nowrap; }
+.jb-navbar-logos img{ display:block; width:auto; object-fit:contain; }
+
+/* Helpers */
+.only-mobile{ display:none !important; }
+
+/* ===== 2 trams en rem (62rem ≈ 992px) ===== */
+
+/* ≥62rem: Escriptori */
+@media (min-width:62rem){
+  .bd-header .announcement .jb-navbar-logos img,
+  .bd-header .navbar .jb-navbar-logos img{
+    height:var(--logo-extra-desktop) !important;
+  }
+  .only-mobile{ display:none !important; }
+  .navbar-brand img{ display:block !important; }
+}
+
+/* <62rem: Mòbil/Tauleta */
+@media (max-width:61.99rem){
+  .bd-header .announcement .jb-navbar-logos img,
+  .bd-header .navbar .jb-navbar-logos img{
+    height:var(--logo-extra-mobile) !important;
+  }
+  .only-mobile{ display:inline-block !important; } /* mostra el logo del centre dins el bloc */
+  .navbar-brand img{ display:none !important; }    /* evita duplicat del logo del lloc */
+}
+
+/* ===== Sidebars ===== */
+@media (min-width:62rem){
+  .bd-sidebar-primary, .bd-sidebar-secondary{
+    background:transparent !important; box-shadow:none !important; border:0 !important;
+  }
+  .bd-sidebar-primary .bd-search{ display:block !important; }
+}
+@media (max-width:61.99rem){
+  .bd-sidebar-primary,
+  .bd-sidebar-secondary,
+  .bd-sidebar-secondary .bd-toc,
+  .bd-sidebar-secondary .sidebar-header,
+  .bd-sidebar-secondary .toc-title{
+    background:#fff !important; box-shadow:none !important; border:0 !important;
+  }
+}
+
+/* ===== Footer (arregla tamanys) ===== */
+.custom-footer{ display:flex; align-items:center; justify-content:center; gap:2vw; width:100%;
+  background:#fff; padding:2vh 5vw; color:#000; box-sizing:border-box; border-top:var(--border-hair) solid #ddd; }
+.custom-footer .footer-logo img{ height:var(--footer-logo-desktop); max-height:100%; width:auto; display:block; }
+
+.bd-footer .logos img,
+.bd-footer .footer-logo img{ height:var(--footer-logo-desktop); max-height:100%; width:auto; display:inline-block; }
+
+@media (max-width:61.99rem){
+  .custom-footer .footer-logo img,
+  .bd-footer .logos img,
+  .bd-footer .footer-logo img{ height:var(--footer-logo-mobile); }
+}
+
+/* ===== Detallets visuals ===== */
+.bd-content h1{ border-bottom:.125rem solid var(--brand-primary); padding-bottom:.2rem; }
+body{
+  background-image:
+    linear-gradient(rgba(255,255,255,.1), rgba(255,255,255,.7)),
+    url("../../assets/img/fondo.png");
+  background-size:cover; background-position:center bottom; background-repeat:no-repeat; background-attachment:fixed;
+}
+/* —— variable responsive: 2 trams (desktop / mòbil) —— */
+:root{ --jb-logo-h: 2.5rem; }             /* 40px en escriptori */
+@media (max-width: 62rem){ :root{ --jb-logo-h: 1.875rem; } }  /* 30px en mòbil */
+
+/* —— mida dels logos: val tant si el bloc està a .announcement com a .navbar —— */
+html body header.bd-header .announcement .jb-navbar-logos img,
+html body header.bd-header .navbar .jb-navbar-logos img{
+  height: var(--jb-logo-h) !important;
+  max-height: var(--jb-logo-h) !important;
+  width: auto !important;
+  object-fit: contain;
+  display: block;
+}
+
+/* —— layout del bloc —— */
+.jb-navbar-logos{ display:flex; align-items:center; gap:.75rem; margin-left:1rem; }
+
+/* —— visibilitat: el del centre només en mòbil —— */
+.only-mobile{ display:none !important; }
+@media (max-width: 62rem){
+  .only-mobile{ display:inline-block !important; }
+  /* amaga el logo oficial de la navbar per a no duplicar en pantalles menudes */
+  .navbar-brand img{ display:none !important; }
+}
+@media (min-width: 62rem){
+  .navbar-brand img{ display:block !important; }
+}

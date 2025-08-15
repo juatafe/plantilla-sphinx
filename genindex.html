@@ -31,9 +31,9 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="_static/assets/stylesheets/extracsspdf.css" />
-    <link rel="stylesheet" type="text/css" href="_static/assets/stylesheets/customs.css" />
-    <link rel="stylesheet" type="text/css" href="_static/assets/stylesheets/extra.css" />
+    <link rel="stylesheet" type="text/css" href="_static/assets/stylesheets/extracsspdf.css?v=471b9758" />
+    <link rel="stylesheet" type="text/css" href="_static/assets/stylesheets/customs.css?v=c2aba5e1" />
+    <link rel="stylesheet" type="text/css" href="_static/assets/stylesheets/extra.css?v=d8f2a1f1" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -52,8 +52,11 @@
     <link rel="icon" href="_static/logo50.ico"/>
     <link rel="index" title="Índex" href="#" />
     <link rel="search" title="Cerca" href="search.html" />
+  
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="ca"/>
+  <link rel="stylesheet" href="_static/assets/stylesheets/zz-override.css">
+
   </head>
   
   
@@ -115,7 +118,15 @@
   <div class="col-lg-3 navbar-header-items__start">
     
       <div class="navbar-item"><div class="jb-navbar-logos">
-  <a href="https://ceice.gva.es/va/web/educacion" target="_blank" aria-label="GVA Next">
+  <!-- Logo del centre: només en mòbil -->
+  <a href="https://portal.edu.gva.es/iesjaumeeljust/" target="_blank" aria-label="IES Jaume II El Just">
+    <img class="logo-just only-mobile"
+         src="_static/assets/img/logos/logoJust.png"
+         alt="IES Jaume II El Just">
+  </a>
+
+  <!-- GVA Next: en tots els trams -->
+  <a href="https://gvaoberta.gva.es/va/web/nextgeneration" target="_blank" aria-label="GVA Next">
     <img class="logo-gvanext"
          src="_static/assets/img/logos/GvaNext.png"
          alt="GVA Next">
@@ -407,18 +418,8 @@ Per Juan Bautista Talens
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
   <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
 <script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
-<footer class="custom-footer">
-  <div class="footer-logo footer-left">
-    <a href="https://portal.edu.gva.es/iesjaumeeljust/" target="_blank">
-      <img src="_static/assets/img/logos/FonsVal.png" alt="Fons Val" height="40">
-    </a>
-  </div>
-  <div class="footer-text">© 2025 Llicència CC BY-NC-SA 4.0</div>
-  <div class="footer-logo footer-right">
-    <a href="https://ceice.gva.es/va/web/educacion" target="_blank">
-      <img src="_static/assets/img/logos/miniPla.png" alt="Mini Pla" height="40">
-    </a>
-  </div>
-</footer>
+
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>
