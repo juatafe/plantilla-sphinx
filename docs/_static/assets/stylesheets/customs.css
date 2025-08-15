@@ -28,7 +28,7 @@
 }
 
 /* Amagar el logo per defecte del tema (opcional) */
-.navbar-brand img { display: none; }
+/* .navbar-brand img { display: none; } */
 
 /* ===== Bloc de logos extra ===== */
 .jb-navbar-logos {
@@ -102,7 +102,4 @@ body {
   background-position: center bottom;
   background-repeat: no-repeat;
   background-attachment: fixed;
-}
-.jb-header-logos img {
-  margin-left: 10px;
 }

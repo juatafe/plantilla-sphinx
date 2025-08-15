@@ -33,7 +33,7 @@ html_favicon = "_static/assets/img/logos/logo50.ico"
 html_css_files = [
     "assets/stylesheets/extracsspdf.css",
     "assets/stylesheets/customs.css",
-    "assets/stylesheets/extra.css",
+    #"assets/stylesheets/extra.css",
 ]
 
 def slugify(s: str) -> str:
@@ -54,6 +54,7 @@ _book_opts = {
     "use_repository_button": True,
     "use_issues_button": True,
     "use_download_button": True,
+    "navbar_start": ["navbar-logo", "jb-header-logos"],
 }
 
 
